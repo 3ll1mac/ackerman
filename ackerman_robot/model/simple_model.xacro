@@ -1,0 +1,85 @@
+<?xml version="1.0" ?>
+<robot name="ackerman_robot" xmlns:xacro="http://www.ros.rog/wiki/xacro">
+		
+
+	  <xacro:arg name="body_length" default="2.0" />
+  <xacro:arg name="body_width" default="1.0" />
+  <xacro:arg name="body_height" default="0.5" />
+  <xacro:arg name="body_density" default="1000.0" />
+  <xacro:arg name="wheel_radius" default="0.3" />
+  <xacro:arg name="wheel_width" default="0.1" />
+  <xacro:arg name="wheel_density" default="1000.0" />
+  <xacro:arg name="max_steering_angle" default="0.6108" />
+  <xacro:arg name="max_steering_angular_velocity" default="1.570796" />
+  <xacro:arg name="max_steering_effort" default="1.0" />
+  <xacro:arg name="max_velocity" default="1.0" />
+  <xacro:arg name="max_effort" default="10.0" />
+
+  <!-- Mathematical Constants -->
+  <xacro:property name="PI" value="3.14159265"/>
+
+  <!-- Vehicle Properties -->
+  <xacro:property name="body_length" value="$(arg body_length)"/>
+  <xacro:property name="body_width" value="$(arg body_width)"/>
+  <xacro:property name="body_height" value="$(arg body_height)"/>
+  <xacro:property name="body_density" value="$(arg body_density)"/>
+    <xacro:property name="body_mass" value="${body_density * body_length * body_height * body_width}"/>
+  <xacro:property name="body_inertia_x" value="${1.0/12.0 * body_mass * (body_height*body_height + body_width*body_width)}"/>
+  <xacro:property name="body_inertia_y" value="${1.0/12.0 * body_mass * (body_length*body_length + body_height*body_height)}"/>
+  <xacro:property name="body_inertia_z" value="${1.0/12.0 * body_mass * (body_length*body_length + body_width*body_width)}"/>
+
+    <!-- Body Link -->
+  <link name="body_link">
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <geometry>
+        <box size="${body_length} ${body_width} ${body_height}"/>
+      </geometry>
+      <material name="body_material">
+        <color rgba="0.25 0.25 0.25 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <geometry>
+        <box size="${body_length} ${body_width} ${body_height}"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="${body_mass}"/>
+      <inertia ixx="${body_inertia_x}" ixy="0.0" ixz="0.0" iyy="${body_inertia_y}" iyz="0" izz="${body_inertia_z}"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </inertial>
+  </link>
+
+  <gazebo>
+<plugin filename="gz-sim-triggered-publisher-system"
+		    name="gz::sim::systems::TriggeredPublisher">
+	    <input type="gz.msgs.Int32" topic="/keyboard/keypress">
+		    <match field="data">16777235</match>
+	    </input>
+	    <output type="gz.msgs.Twist" topic="/cmd_vel">
+		    linear: {x: 0.5}, angular: {z: 0.0}
+	    </output>
+    </plugin>
+ <plugin
+            filename="gz-sim-user-commands-system"
+            name="gz::sim::systems::UserCommands">
+        </plugin>
+        <plugin
+            filename="gz-sim-scene-broadcaster-system"
+            name="gz::sim::systems::SceneBroadcaster">
+        </plugin>
+
+<plugin
+			filename="gz-sim-diff-drive-system"
+			name="gz::sim::systems::DiffDrive">
+		<odom_publish_frequency>1</odom_publish_frequency>
+		<topic>cmd_vel</topic>
+	</plugin>
+
+
+  </gazebo>
+
+</robot>
+

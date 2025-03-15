@@ -1,4 +1,5 @@
 import os
+import xacro
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch.actions import IncludeLaunchDescription, ExecuteProcess
@@ -24,10 +25,12 @@ def generate_launch_description():
     )
 
     # XACRO file
-    xacro_file = os.path.join(pkg_share, 'model', 'example.urdf')
-    
-    with open(xacro_file, 'r') as infp:
-        robot_desc = infp.read()
+    #xacro_file = os.path.join(pkg_share, 'model', 'example.urdf')
+    #with open(xacro_file, 'r') as infp:
+    #    robot_desc = infp.read()
+
+    xacro_file = os.path.join(pkg_share, 'model', 'example.xacro')
+    robot_desc = xacro.process_file(xacro_file).toxml()
 
     # Robot State Publisher
     robot_state_publisher = Node(

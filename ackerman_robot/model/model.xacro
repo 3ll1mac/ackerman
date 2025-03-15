@@ -1,0 +1,266 @@
+<?xml version="1.0"?>
+
+<robot name="ackerman_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- Arguments -->
+  <xacro:arg name="body_length" default="2.0" />
+  <xacro:arg name="body_width" default="1.0" />
+  <xacro:arg name="body_height" default="0.5" />
+  <xacro:arg name="body_density" default="1000.0" />
+  <xacro:arg name="wheel_radius" default="0.3" />
+  <xacro:arg name="wheel_width" default="0.1" />
+  <xacro:arg name="wheel_density" default="1000.0" />
+  <xacro:arg name="max_steering_angle" default="10.6108" />
+  <xacro:arg name="max_steering_angular_velocity" default="10.570796" />
+  <xacro:arg name="max_steering_effort" default="10.0" />
+  <xacro:arg name="max_velocity" default="10.0" />
+  <xacro:arg name="max_effort" default="10.0" />
+
+  <!-- Mathematical Constants -->
+  <xacro:property name="PI" value="3.14159265"/>
+
+  <!-- Vehicle Properties -->
+  <xacro:property name="body_length" value="$(arg body_length)"/>
+  <xacro:property name="body_width" value="$(arg body_width)"/>
+  <xacro:property name="body_height" value="$(arg body_height)"/>
+  <xacro:property name="body_density" value="$(arg body_density)"/>
+  <xacro:property name="wheel_radius" value="$(arg wheel_radius)"/>
+  <xacro:property name="wheel_width" value="$(arg wheel_width)"/>
+  <xacro:property name="wheel_density" value="$(arg wheel_density)"/>
+  <xacro:property name="max_steering_angle" value="$(arg max_steering_angle)"/>
+  <xacro:property name="max_steering_angular_velocity" value="$(arg max_steering_angular_velocity)"/>
+  <xacro:property name="max_steering_effort" value="$(arg max_steering_effort)"/>
+  <xacro:property name="max_velocity" value="$(arg max_velocity)"/>
+  <xacro:property name="max_effort" value="$(arg max_effort)"/>
+  
+  <xacro:property name="body_mass" value="${body_density * body_length * body_height * body_width}"/>
+  <xacro:property name="body_inertia_x" value="${1.0/12.0 * body_mass * (body_height*body_height + body_width*body_width)}"/>
+  <xacro:property name="body_inertia_y" value="${1.0/12.0 * body_mass * (body_length*body_length + body_height*body_height)}"/>
+  <xacro:property name="body_inertia_z" value="${1.0/12.0 * body_mass * (body_length*body_length + body_width*body_width)}"/>
+  <xacro:property name="wheel_separation" value="${body_width + wheel_width}"/>
+  <xacro:property name="wheel_offset" value="${body_length/2 - wheel_radius}"/>
+  <xacro:property name="wheel_mass" value="${wheel_density * PI * wheel_radius * wheel_radius * wheel_width}"/>
+  <xacro:property name="wheel_inertia_x" value="${1.0/12.0 * wheel_mass * (3*wheel_radius*wheel_radius + wheel_width*wheel_width)}"/>
+  <xacro:property name="wheel_inertia_y" value="${1.0/12.0 * wheel_mass * (3*wheel_radius*wheel_radius + wheel_width*wheel_width)}"/>
+  <xacro:property name="wheel_inertia_z" value="${1.0/2.0 * wheel_mass * wheel_radius * wheel_radius}"/>
+  <xacro:property name="max_wheel_angular_velocity" value="${max_velocity / wheel_radius}"/>
+
+
+  <!-- Body Link -->
+  <link name="body_link">
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <geometry>
+        <box size="${body_length} ${body_width} ${body_height}"/>
+      </geometry>
+      <material name="body_material">
+        <color rgba="0.25 0.25 0.25 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      <geometry>
+        <box size="${body_length} ${body_width} ${body_height}"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="${body_mass}"/>
+      <inertia ixx="${body_inertia_x}" ixy="0.0" ixz="0.0" iyy="${body_inertia_y}" iyz="0" izz="${body_inertia_z}"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </inertial>
+  </link>
+
+  <!-- Front Left Wheel -->
+  <link name="front_left_wheel_link">
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="1.570795 0.0 0.0"/>
+      <geometry>
+        <cylinder radius="${wheel_radius}" length="${wheel_width}"/>
+      </geometry>
+      <material name="wheel_material">
+        <color rgba="0.0 0.0 0.0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="1.570795 0.0 0.0"/>
+      <geometry>
+        <cylinder radius="${wheel_radius}" length="${wheel_width}"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="${wheel_mass}"/>
+      <inertia ixx="${wheel_inertia_x}" ixy="0.0" ixz="0.0" iyy="${wheel_inertia_y}" iyz="0" izz="${wheel_inertia_z}"/>
+      <origin xyz="0.0 0.0 0.0" rpy="1.570795 0.0 0.0"/>
+    </inertial>
+  </link>
+
+   <!-- Front Right Wheel -->
+  <link name="front_right_wheel_link">
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="1.570795 0.0 0.0"/>
+      <geometry>
+        <cylinder radius="${wheel_radius}" length="${wheel_width}"/>
+      </geometry>
+      <material name="wheel_material">
+        <color rgba="0.0 0.0 0.0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="1.570795 0.0 0.0"/>
+      <geometry>
+        <cylinder radius="${wheel_radius}" length="${wheel_width}"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="${wheel_mass}"/>
+      <inertia ixx="${wheel_inertia_x}" ixy="0.0" ixz="0.0" iyy="${wheel_inertia_y}" iyz="0" izz="${wheel_inertia_z}"/>
+      <origin xyz="0.0 0.0 0.0" rpy="1.570795 0.0 0.0"/>
+    </inertial>
+  </link>
+
+   <!-- Rear Left Wheel -->
+  <link name="rear_left_wheel_link">
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="1.570795 0.0 0.0"/>
+      <geometry>
+        <cylinder radius="${wheel_radius}" length="${wheel_width}"/>
+      </geometry>
+      <material name="wheel_material">
+        <color rgba="0.0 0.0 0.0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="1.570795 0.0 0.0"/>
+      <geometry>
+        <cylinder radius="${wheel_radius}" length="${wheel_width}"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="2"/>
+      <inertia ixx="${wheel_inertia_x}" ixy="0.0" ixz="0.0" iyy="${wheel_inertia_y}" iyz="0" izz="${wheel_inertia_z}"/>
+      <origin xyz="0.0 0.0 0.0" rpy="1.570795 0.0 0.0"/>
+    </inertial>
+  </link>
+
+  <!-- Rear Right Wheel -->
+  <link name="rear_right_wheel_link">
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="1.570795 0.0 0.0"/>
+      <geometry>
+        <cylinder radius="${wheel_radius}" length="${wheel_width}"/>
+      </geometry>
+      <material name="wheel_material">
+        <color rgba="0.0 0.0 0.0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="1.570795 0.0 0.0"/>
+      <geometry>
+        <cylinder radius="${wheel_radius}" length="${wheel_width}"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="2"/>
+      <inertia ixx="${wheel_inertia_x}" ixy="0.0" ixz="0.0" iyy="${wheel_inertia_y}" iyz="0" izz="${wheel_inertia_z}"/>
+      <origin xyz="0.0 0.0 0.0" rpy="1.570795 0.0 0.0"/>
+    </inertial>
+  </link>
+
+  <!-- Joints -->
+
+   <!-- Front Left Wheel Joint -->
+  <joint name="front_left_wheel_joint" type="continuous">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="body_link"/>
+    <child link="front_left_wheel_link"/>
+    <axis xyz="0 1 0"/> 
+    <limit effort="${max_effort}" velocity="${max_wheel_angular_velocity}"/>
+    <dynamics damping="0.1" friction="0.1"/>
+  </joint>
+
+   <!-- Front Right Wheel Joint -->
+  <joint name="front_right_wheel_joint" type="continuous">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="body_link"/>
+    <child link="front_right_wheel_link"/>
+    <axis xyz="0 1 0"/> 
+    <limit effort="${max_effort}" velocity="${max_wheel_angular_velocity}"/>
+    <dynamics damping="0.1" friction="0.1"/>
+  </joint>
+
+  <!-- Rear Left Wheel Joint -->
+  <joint name="rear_left_wheel_joint" type="continuous">
+    <origin xyz="-${wheel_offset} ${wheel_separation/2} -${wheel_radius/2}" rpy="0 0 0"/>
+    <parent link="body_link"/>
+    <child link="rear_left_wheel_link"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="${max_effort}" velocity="${max_wheel_angular_velocity}"/>
+    <dynamics damping="0.1" friction="0.1"/>
+  </joint>
+
+  <!-- Rear Right Wheel Joint -->
+  <joint name="rear_right_wheel_joint" type="continuous">
+    <origin xyz="-${wheel_offset} ${-wheel_separation/2} -${wheel_radius/2}" rpy="0 0 0"/>
+    <parent link="body_link"/>
+    <child link="rear_right_wheel_link"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="${max_effort}" velocity="${max_wheel_angular_velocity}"/>
+    <dynamics damping="0.1" friction="0.1"/>
+  </joint>
+
+  <!-- Gazebo Parameters -->
+  <gazebo reference="body_link">
+    <mu1>0.0001</mu1>
+    <mu2>0.0001</mu2>
+  </gazebo>
+
+  <gazebo reference="front_right_wheel_link">
+    <mu1>100.0</mu1>
+    <mu2>100.0</mu2>
+  </gazebo>
+
+  <gazebo reference="front_left_wheel_link">
+    <mu1>100.0</mu1>
+    <mu2>100.0</mu2>
+  </gazebo>
+    
+  <gazebo reference="rear_right_wheel_link">
+    <mu1>100.0</mu1>
+    <mu2>100.0</mu2>
+  </gazebo>
+
+  <gazebo reference="rear_left_wheel_link">
+    <mu1>100.0</mu1>
+    <mu2>100.0</mu2>
+  </gazebo>
+
+ <!-- Gazebo Plugins -->
+  <gazebo>
+    <plugin filename="gz-sim-joint-state-publisher-system" name="gz::sim::systems::JointStatePublisher">
+      <topic>joint_states</topic>
+      <joint_name>front_left_wheel_joint</joint_name>
+      <joint_name>front_right_wheel_joint</joint_name>
+      <!--<joint_name>rear_left_wheel_joint</joint_name>-->
+      <!--<joint_name>rear_right_wheel_joint</joint_name>-->
+    </plugin>
+
+    <plugin filename="gz-sim-diff-drive-system" name="gz::sim::systems::DiffDrive">
+            <odom_publisher_frequency>50</odom_publisher_frequency>
+            <left_joint>front_left_wheel_joint</left_joint>
+            <right_joint>front_right_wheel_joint</right_joint>
+            <wheel_separation>0.35</wheel_separation>
+            <wheel_diameter>0.2</wheel_diameter>
+            <max_wheel_torque>20</max_wheel_torque>
+            <max_linear_acceleration>1.0</max_linear_acceleration>
+            <topic>cmd_vel</topic>
+            <publish_odom>true</publish_odom>
+            <publish_odom_tf>true</publish_odom_tf>
+            <publish_wheel_tf>true</publish_wheel_tf>
+            <odom_topic>odom</odom_topic>
+            <frame_id>odom</frame_id>
+            <child_frame_id>body_link</child_frame_id>
+        </plugin>
+
+
+  </gazebo>
+</robot>
