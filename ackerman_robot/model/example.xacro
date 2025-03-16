@@ -94,7 +94,7 @@
             </geometry>
         </collision>
         <inertial>
-            <mass value="0.5"/>
+            <mass value="0.01"/>
             <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01"/>
         </inertial>
     </link>
@@ -113,7 +113,7 @@
             </geometry>
         </collision>
         <inertial>
-            <mass value="0.5"/>
+            <mass value="0.01"/>
             <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01"/>
         </inertial>
     </link>
@@ -204,6 +204,21 @@
         <mu1 value="0.1"/>
         <mu2 value="0.1"/>
     </gazebo>
+
+    <gazebo reference="back_right_wheel">
+        <material>Gazebo/Black</material>
+        <mu1 value="1.0"/>
+        <mu2 value="1.0"/>
+    </gazebo>
+
+
+    <gazebo reference="back_left_wheel">
+        <material>Gazebo/Black</material>
+        <mu1 value="0.1"/>
+        <mu2 value="0.1"/>
+    </gazebo>
+
+
 
     <!-- Gazebo plugin for differential drive -->
     <gazebo>
