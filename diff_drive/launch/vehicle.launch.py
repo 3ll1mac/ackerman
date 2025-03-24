@@ -29,7 +29,7 @@ def generate_launch_description():
     #with open(xacro_file, 'r') as infp:
     #    robot_desc = infp.read()
 
-    xacro_file = os.path.join(pkg_share, 'model', 'example.xacro')
+    xacro_file = os.path.join(pkg_share, 'model', 'two_wheels.xacro')
     robot_desc = xacro.process_file(xacro_file).toxml()
 
     # Robot State Publisher
@@ -66,9 +66,20 @@ def generate_launch_description():
         output='screen'
     )
 
+    # Teleop Twist Keyboard
+    teleop_node = Node(
+        package='teleop_twist_keyboard',
+        executable='teleop_twist_keyboard',
+        name='teleop_twist_keyboard',
+        output='screen',
+        prefix='xterm -e',
+        remappings=[('/cmd_vel', '/cmd_vel')]
+    )
+
     return LaunchDescription([
         gazebo,
         robot_state_publisher,
         bridge,
         spawn_entity,
+        teleop_node,
     ])

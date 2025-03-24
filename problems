@@ -24,3 +24,11 @@ PROBLEME: robot not apperring on gazebo
 SOLUTION: Gazebo needs the inertial tags for every link. 
 	  Add a ground plane in world.sdf
 
+
+
+###################################### NUMBER 4
+
+PROBLEME:
+Requestion list of name
+SOLUTION: make sure you have a world file
+	Otherwise just redo everything from scratch honestly

@@ -22,7 +22,7 @@ ament_target_dependencies(example_ackermann_drive
 
 
 install(
-  DIRECTORY launch worlds urdf config
+  DIRECTORY launch model worlds urdf config
   DESTINATION share/${PROJECT_NAME}
 )
 
