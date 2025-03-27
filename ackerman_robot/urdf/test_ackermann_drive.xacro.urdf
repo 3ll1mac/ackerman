@@ -217,5 +217,4 @@
       <parameters>$(find ackerman_robot)/config/ackermann_drive_controller.yaml</parameters>
     </plugin>
   </gazebo>
-
 </robot>
