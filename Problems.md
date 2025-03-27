@@ -26,7 +26,7 @@ E: Unable to locate package rosbash
 
 ## Solution
 ``` bash  
-$ xacro vehicle.xacro > vehicule.urdf
+$ xacro vehicle_xacro.xacro > vehicule_urdf.urdf
 
 # And  .urdf  to .sdf
 $ gz sdf -p file.urdf > file.sdf
@@ -40,6 +40,7 @@ $ gz sdf -p file.urdf > file.sdf
 
 ## Problem
 ``` bash
+# something like that 
 [robot_state_publisher-2] Error:   Error=XML_ERROR_PARSING_TEXT ErrorID=8 (0x8) Line number=1
 [robot_state_publisher-2]          at line 101 in ./urdf_parser/src/model.cpp
 [robot_state_publisher-2] Failed to parse robot description using: urdf_xml_parser/URDFXMLParser
@@ -54,9 +55,22 @@ To verify your urdf is correctly parsed use to following command:
 ```bash
 $ check_urdf <path_to_file>
 ```
+However be carefull, if your file contains xacro command, check_urdf will mistake them for errors. 
 
-## Solution 
-If file is <code>.xacro</code>, refer to issue **[NUMBER 1](#number1)**.
+## Answer 
+Read all answers before acting.
+
+<u>Answer 1</u>: If your file is a <code>.xacro</code>, refer to issue **[NUMBER 1](#number1)**.
+
+<u>Answer 2</u>: If your file is a <code>.urdf</code>, but contains <code>xacro:macro</code>, refer **[NUMBER 1](#number1)**. But this time, replace <code>vehicule_xacro.xacro</code> by your <code>.urdf</code> file. This command will parse and calculate your calculs. 
+
+<u>Answer 3</u>: Or, instead of answer 1 and 2, in your launch.py, instead of opening and parsing a <code>.urdf</code>, open and parse an <code>.xacro</code> file. Here is an example.
+
+```bash
+xacro_file = os.path.join(pkg_share, "src/description/two_wheels.xacro")
+robot_desc = xacro.process_file(xacro_file).toxml()
+```
+
 
 If the file is a <code>.urdf</code> and <code>check_urdf</code> works, verify your CMakeList and launch.py.
 
@@ -94,9 +108,40 @@ Requesting list of name
 
 ## Solution: 
 
-First make sure you have a world file and it is well integrated in the launch file.
+First make sure you have a world file and it is well integrated in the launch file. In your launch file you need to have a gazebo and a spawn_robot node. Here is an example:
 
-Otherwise just redo everything from scratch honestly.
+```base
+world_file_name = 'world.sdf'
+world_path = os.path.join(pkg_share, 'worlds', world_file_name)
+  
+# Gazebo launch
+gazebo = IncludeLaunchDescription(
+         PythonLaunchDescriptionSource([os.path.join(
+           get_package_share_directory('ros_gz_sim'), 'launch', 'gz_sim.launch.py')]),
+          launch_arguments={'gz_args': ['-r ', world_path],
+          'on_exit_shutdown': 'true'}.items()
+          # launch_arguments={'world': world_path}.items(),
+ )
+ 
+# spawn robot by getting the description of the robot from the
+# /robot_description topic 
+spawn_entity = Node(
+    package='ros_gz_sim',
+    executable='create',
+    arguments=['-topic','robot_description',
+        '-name', 'diffbot',
+        '-z', '1.0'],
+        output='screen'
+)
+
+ld.add_action(gazebo)
+ld.add_action(spawn_entity)
+
+```
+
+For example, missing the gazebo node will cause the "requestions list of name" error.
+
+Otherwise just redo everything from scratch honestly or use a working github repository to compare.
 
 <div id="number5"></div>
 <span style="color:darkred">
@@ -118,7 +163,7 @@ If it does not change anything, re-delete these folders and reboot your computer
 
 In it still does not work, click on the <code>reset</code> button in the gazebo API (next to the <code>play</code> button).
 
-However if after reseeting you are having troubles such as
+However if after reseting you are having troubles such as
 
 ``` bash
 No clock received, using time argument instead! Check your node's clock configuration (use_sim_time parameter) and if a valid clock source is available
@@ -126,6 +171,6 @@ No clock received, using time argument instead! Check your node's clock configur
 
 Or gazebo run but does not even show you the ground plance, I would recommend to uninstall and reinstall gazebo.
 
-If you are using a VM et it still does not work or you have broken gazebo by uninstall/reinstalled it, create another virtual machine and re-install everything from scratch.
+If you are using a VM and it still does not work or you have broken gazebo by uninstall/reinstalled it, create another virtual machine and re-install everything from scratch.
 
  
