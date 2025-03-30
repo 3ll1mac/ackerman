@@ -9,7 +9,7 @@ from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
 
 def generate_launch_description():
-    pkg_share = get_package_share_directory('ackerman_robot')
+    pkg_share = get_package_share_directory('diff_drive')
     
     # Path to the custom world file
     world_file_name = 'world.sdf'
