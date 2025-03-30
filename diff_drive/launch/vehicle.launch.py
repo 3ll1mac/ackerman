@@ -29,7 +29,7 @@ def generate_launch_description():
     #with open(xacro_file, 'r') as infp:
     #    robot_desc = infp.read()
 
-    xacro_file = os.path.join(pkg_share, 'model', 'two_wheels.xacro')
+    xacro_file = os.path.join(pkg_share, 'model', 'four_wheels.xacro')
     robot_desc = xacro.process_file(xacro_file).toxml()
 
     # Robot State Publisher
