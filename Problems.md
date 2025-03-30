@@ -174,3 +174,13 @@ Or gazebo run but does not even show you the ground plance, I would recommend to
 If you are using a VM and it still does not work or you have broken gazebo by uninstall/reinstalled it, create another virtual machine and re-install everything from scratch.
 
  
+
+ <div id="number5"></div>
+<span style="color:darkred">
+
+# NUMBER 6 - Robot half sinking into the ground
+</span>
+
+If your robot is half sinking into the ground has seen in the following image. Make sure you have a **collision** tag for the wheels, and the collision has an origin and geometry tags.
+
+![Texte alternatif](images/wheels_sinking.png "Links et joints dans un robot")
