@@ -1,0 +1,341 @@
+[0.194s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--symlink-install']
+[0.194s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=True, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=4, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x752dfe13d240>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x752dfe13c880>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x752dfe13c880>>, mixin_verb=('build',))
+[0.624s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.625s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.625s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.625s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.625s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.625s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.625s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/halimatou-cisse/ros2_demos/ros2_control_demos'
+[0.625s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.625s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.625s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.625s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.625s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.625s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.625s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.625s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.625s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.640s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.641s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.641s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.641s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.641s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.641s] Level 1:colcon.colcon_core.package_identification:_identify(Dockerfile) by extensions ['ignore', 'ignore_ament_install']
+[0.641s] Level 1:colcon.colcon_core.package_identification:_identify(Dockerfile) by extension 'ignore'
+[0.641s] Level 1:colcon.colcon_core.package_identification:_identify(Dockerfile) by extension 'ignore_ament_install'
+[0.641s] Level 1:colcon.colcon_core.package_identification:_identify(Dockerfile) by extensions ['colcon_pkg']
+[0.641s] Level 1:colcon.colcon_core.package_identification:_identify(Dockerfile) by extension 'colcon_pkg'
+[0.641s] Level 1:colcon.colcon_core.package_identification:_identify(Dockerfile) by extensions ['colcon_meta']
+[0.641s] Level 1:colcon.colcon_core.package_identification:_identify(Dockerfile) by extension 'colcon_meta'
+[0.641s] Level 1:colcon.colcon_core.package_identification:_identify(Dockerfile) by extensions ['ros']
+[0.641s] Level 1:colcon.colcon_core.package_identification:_identify(Dockerfile) by extension 'ros'
+[0.642s] Level 1:colcon.colcon_core.package_identification:_identify(Dockerfile) by extensions ['cmake', 'python']
+[0.642s] Level 1:colcon.colcon_core.package_identification:_identify(Dockerfile) by extension 'cmake'
+[0.642s] Level 1:colcon.colcon_core.package_identification:_identify(Dockerfile) by extension 'python'
+[0.642s] Level 1:colcon.colcon_core.package_identification:_identify(Dockerfile) by extensions ['python_setup_py']
+[0.642s] Level 1:colcon.colcon_core.package_identification:_identify(Dockerfile) by extension 'python_setup_py'
+[0.642s] Level 1:colcon.colcon_core.package_identification:_identify(ackermann) by extensions ['ignore', 'ignore_ament_install']
+[0.642s] Level 1:colcon.colcon_core.package_identification:_identify(ackermann) by extension 'ignore'
+[0.642s] Level 1:colcon.colcon_core.package_identification:_identify(ackermann) by extension 'ignore_ament_install'
+[0.642s] Level 1:colcon.colcon_core.package_identification:_identify(ackermann) by extensions ['colcon_pkg']
+[0.642s] Level 1:colcon.colcon_core.package_identification:_identify(ackermann) by extension 'colcon_pkg'
+[0.642s] Level 1:colcon.colcon_core.package_identification:_identify(ackermann) by extensions ['colcon_meta']
+[0.642s] Level 1:colcon.colcon_core.package_identification:_identify(ackermann) by extension 'colcon_meta'
+[0.642s] Level 1:colcon.colcon_core.package_identification:_identify(ackermann) by extensions ['ros']
+[0.642s] Level 1:colcon.colcon_core.package_identification:_identify(ackermann) by extension 'ros'
+[0.646s] DEBUG:colcon.colcon_core.package_identification:Package 'ackermann' with type 'ros.ament_cmake' and name 'ros2_control_demo_example_11'
+[0.646s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.646s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.646s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.647s] Level 1:colcon.colcon_core.package_identification:_identify(doc) by extensions ['ignore', 'ignore_ament_install']
+[0.647s] Level 1:colcon.colcon_core.package_identification:_identify(doc) by extension 'ignore'
+[0.647s] Level 1:colcon.colcon_core.package_identification:_identify(doc) by extension 'ignore_ament_install'
+[0.647s] Level 1:colcon.colcon_core.package_identification:_identify(doc) by extensions ['colcon_pkg']
+[0.647s] Level 1:colcon.colcon_core.package_identification:_identify(doc) by extension 'colcon_pkg'
+[0.647s] Level 1:colcon.colcon_core.package_identification:_identify(doc) by extensions ['colcon_meta']
+[0.647s] Level 1:colcon.colcon_core.package_identification:_identify(doc) by extension 'colcon_meta'
+[0.647s] Level 1:colcon.colcon_core.package_identification:_identify(doc) by extensions ['ros']
+[0.647s] Level 1:colcon.colcon_core.package_identification:_identify(doc) by extension 'ros'
+[0.647s] Level 1:colcon.colcon_core.package_identification:_identify(doc) by extensions ['cmake', 'python']
+[0.647s] Level 1:colcon.colcon_core.package_identification:_identify(doc) by extension 'cmake'
+[0.647s] Level 1:colcon.colcon_core.package_identification:_identify(doc) by extension 'python'
+[0.647s] Level 1:colcon.colcon_core.package_identification:_identify(doc) by extensions ['python_setup_py']
+[0.647s] Level 1:colcon.colcon_core.package_identification:_identify(doc) by extension 'python_setup_py'
+[0.647s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.648s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.648s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.648s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.648s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.648s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.648s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_control_demo_description) by extensions ['ignore', 'ignore_ament_install']
+[0.648s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_control_demo_description) by extension 'ignore'
+[0.648s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_control_demo_description) by extension 'ignore_ament_install'
+[0.648s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_control_demo_description) by extensions ['colcon_pkg']
+[0.648s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_control_demo_description) by extension 'colcon_pkg'
+[0.648s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_control_demo_description) by extensions ['colcon_meta']
+[0.649s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_control_demo_description) by extension 'colcon_meta'
+[0.649s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_control_demo_description) by extensions ['ros']
+[0.649s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_control_demo_description) by extension 'ros'
+[0.649s] DEBUG:colcon.colcon_core.package_identification:Package 'ros2_control_demo_description' with type 'ros.ament_cmake' and name 'ros2_control_demo_description'
+[0.649s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_control_demo_testing) by extensions ['ignore', 'ignore_ament_install']
+[0.650s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_control_demo_testing) by extension 'ignore'
+[0.650s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_control_demo_testing) by extension 'ignore_ament_install'
+[0.650s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_control_demo_testing) by extensions ['colcon_pkg']
+[0.650s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_control_demo_testing) by extension 'colcon_pkg'
+[0.650s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_control_demo_testing) by extensions ['colcon_meta']
+[0.650s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_control_demo_testing) by extension 'colcon_meta'
+[0.650s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_control_demo_testing) by extensions ['ros']
+[0.650s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_control_demo_testing) by extension 'ros'
+[0.651s] DEBUG:colcon.colcon_core.package_identification:Package 'ros2_control_demo_testing' with type 'ros.ament_python' and name 'ros2_control_demo_testing'
+[0.651s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_control_demos) by extensions ['ignore', 'ignore_ament_install']
+[0.651s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_control_demos) by extension 'ignore'
+[0.651s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_control_demos) by extension 'ignore_ament_install'
+[0.651s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_control_demos) by extensions ['colcon_pkg']
+[0.651s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_control_demos) by extension 'colcon_pkg'
+[0.651s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_control_demos) by extensions ['colcon_meta']
+[0.651s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_control_demos) by extension 'colcon_meta'
+[0.651s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_control_demos) by extensions ['ros']
+[0.651s] Level 1:colcon.colcon_core.package_identification:_identify(ros2_control_demos) by extension 'ros'
+[0.652s] DEBUG:colcon.colcon_core.package_identification:Package 'ros2_control_demos' with type 'ros.ament_cmake' and name 'ros2_control_demos'
+[0.652s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.652s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.652s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.652s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.652s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.685s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.685s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.689s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 4 installed packages in /home/halimatou-cisse/ros2_demos/ros2_control_demos/install
+[0.691s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 370 installed packages in /opt/ros/humble
+[0.694s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.753s] Level 5:colcon.colcon_core.verb:set package 'ros2_control_demo_description' build argument 'cmake_args' from command line to 'None'
+[0.753s] Level 5:colcon.colcon_core.verb:set package 'ros2_control_demo_description' build argument 'cmake_target' from command line to 'None'
+[0.753s] Level 5:colcon.colcon_core.verb:set package 'ros2_control_demo_description' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.753s] Level 5:colcon.colcon_core.verb:set package 'ros2_control_demo_description' build argument 'cmake_clean_cache' from command line to 'False'
+[0.753s] Level 5:colcon.colcon_core.verb:set package 'ros2_control_demo_description' build argument 'cmake_clean_first' from command line to 'False'
+[0.753s] Level 5:colcon.colcon_core.verb:set package 'ros2_control_demo_description' build argument 'cmake_force_configure' from command line to 'False'
+[0.753s] Level 5:colcon.colcon_core.verb:set package 'ros2_control_demo_description' build argument 'ament_cmake_args' from command line to 'None'
+[0.753s] Level 5:colcon.colcon_core.verb:set package 'ros2_control_demo_description' build argument 'catkin_cmake_args' from command line to 'None'
+[0.753s] Level 5:colcon.colcon_core.verb:set package 'ros2_control_demo_description' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.753s] DEBUG:colcon.colcon_core.verb:Building package 'ros2_control_demo_description' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/halimatou-cisse/ros2_demos/ros2_control_demos/build/ros2_control_demo_description', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description', 'merge_install': False, 'path': '/home/halimatou-cisse/ros2_demos/ros2_control_demos/ros2_control_demo_description', 'symlink_install': True, 'test_result_base': None}
+[0.753s] Level 5:colcon.colcon_core.verb:set package 'ros2_control_demo_testing' build argument 'cmake_args' from command line to 'None'
+[0.753s] Level 5:colcon.colcon_core.verb:set package 'ros2_control_demo_testing' build argument 'cmake_target' from command line to 'None'
+[0.753s] Level 5:colcon.colcon_core.verb:set package 'ros2_control_demo_testing' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.753s] Level 5:colcon.colcon_core.verb:set package 'ros2_control_demo_testing' build argument 'cmake_clean_cache' from command line to 'False'
+[0.754s] Level 5:colcon.colcon_core.verb:set package 'ros2_control_demo_testing' build argument 'cmake_clean_first' from command line to 'False'
+[0.754s] Level 5:colcon.colcon_core.verb:set package 'ros2_control_demo_testing' build argument 'cmake_force_configure' from command line to 'False'
+[0.754s] Level 5:colcon.colcon_core.verb:set package 'ros2_control_demo_testing' build argument 'ament_cmake_args' from command line to 'None'
+[0.754s] Level 5:colcon.colcon_core.verb:set package 'ros2_control_demo_testing' build argument 'catkin_cmake_args' from command line to 'None'
+[0.754s] Level 5:colcon.colcon_core.verb:set package 'ros2_control_demo_testing' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.754s] DEBUG:colcon.colcon_core.verb:Building package 'ros2_control_demo_testing' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/halimatou-cisse/ros2_demos/ros2_control_demos/build/ros2_control_demo_testing', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_testing', 'merge_install': False, 'path': '/home/halimatou-cisse/ros2_demos/ros2_control_demos/ros2_control_demo_testing', 'symlink_install': True, 'test_result_base': None}
+[0.754s] Level 5:colcon.colcon_core.verb:set package 'ros2_control_demo_example_11' build argument 'cmake_args' from command line to 'None'
+[0.754s] Level 5:colcon.colcon_core.verb:set package 'ros2_control_demo_example_11' build argument 'cmake_target' from command line to 'None'
+[0.754s] Level 5:colcon.colcon_core.verb:set package 'ros2_control_demo_example_11' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.754s] Level 5:colcon.colcon_core.verb:set package 'ros2_control_demo_example_11' build argument 'cmake_clean_cache' from command line to 'False'
+[0.754s] Level 5:colcon.colcon_core.verb:set package 'ros2_control_demo_example_11' build argument 'cmake_clean_first' from command line to 'False'
+[0.754s] Level 5:colcon.colcon_core.verb:set package 'ros2_control_demo_example_11' build argument 'cmake_force_configure' from command line to 'False'
+[0.754s] Level 5:colcon.colcon_core.verb:set package 'ros2_control_demo_example_11' build argument 'ament_cmake_args' from command line to 'None'
+[0.754s] Level 5:colcon.colcon_core.verb:set package 'ros2_control_demo_example_11' build argument 'catkin_cmake_args' from command line to 'None'
+[0.754s] Level 5:colcon.colcon_core.verb:set package 'ros2_control_demo_example_11' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.754s] DEBUG:colcon.colcon_core.verb:Building package 'ros2_control_demo_example_11' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/halimatou-cisse/ros2_demos/ros2_control_demos/build/ros2_control_demo_example_11', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11', 'merge_install': False, 'path': '/home/halimatou-cisse/ros2_demos/ros2_control_demos/ackermann', 'symlink_install': True, 'test_result_base': None}
+[0.755s] Level 5:colcon.colcon_core.verb:set package 'ros2_control_demos' build argument 'cmake_args' from command line to 'None'
+[0.755s] Level 5:colcon.colcon_core.verb:set package 'ros2_control_demos' build argument 'cmake_target' from command line to 'None'
+[0.755s] Level 5:colcon.colcon_core.verb:set package 'ros2_control_demos' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.755s] Level 5:colcon.colcon_core.verb:set package 'ros2_control_demos' build argument 'cmake_clean_cache' from command line to 'False'
+[0.755s] Level 5:colcon.colcon_core.verb:set package 'ros2_control_demos' build argument 'cmake_clean_first' from command line to 'False'
+[0.755s] Level 5:colcon.colcon_core.verb:set package 'ros2_control_demos' build argument 'cmake_force_configure' from command line to 'False'
+[0.755s] Level 5:colcon.colcon_core.verb:set package 'ros2_control_demos' build argument 'ament_cmake_args' from command line to 'None'
+[0.755s] Level 5:colcon.colcon_core.verb:set package 'ros2_control_demos' build argument 'catkin_cmake_args' from command line to 'None'
+[0.755s] Level 5:colcon.colcon_core.verb:set package 'ros2_control_demos' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.755s] DEBUG:colcon.colcon_core.verb:Building package 'ros2_control_demos' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/halimatou-cisse/ros2_demos/ros2_control_demos/build/ros2_control_demos', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos', 'merge_install': False, 'path': '/home/halimatou-cisse/ros2_demos/ros2_control_demos/ros2_control_demos', 'symlink_install': True, 'test_result_base': None}
+[0.755s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.756s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.757s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/halimatou-cisse/ros2_demos/ros2_control_demos/ros2_control_demo_description' with build type 'ament_cmake'
+[0.757s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/halimatou-cisse/ros2_demos/ros2_control_demos/ros2_control_demo_description'
+[0.763s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.763s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.763s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.768s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/halimatou-cisse/ros2_demos/ros2_control_demos/ros2_control_demo_testing' with build type 'ament_python'
+[0.769s] Level 1:colcon.colcon_core.shell:create_environment_hook('ros2_control_demo_testing', 'ament_prefix_path')
+[0.769s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_testing/share/ros2_control_demo_testing/hook/ament_prefix_path.ps1'
+[0.770s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_testing/share/ros2_control_demo_testing/hook/ament_prefix_path.dsv'
+[0.771s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_testing/share/ros2_control_demo_testing/hook/ament_prefix_path.sh'
+[0.773s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.773s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.790s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/halimatou-cisse/ros2_demos/ros2_control_demos/build/ros2_control_demo_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_testing:/opt/ros/humble /usr/bin/cmake --build /home/halimatou-cisse/ros2_demos/ros2_control_demos/build/ros2_control_demo_description -- -j4 -l4
+[1.249s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/halimatou-cisse/ros2_demos/ros2_control_demos/ros2_control_demo_testing'
+[1.249s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.249s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.256s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/halimatou-cisse/ros2_demos/ros2_control_demos/build/ros2_control_demo_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_testing:/opt/ros/humble /usr/bin/cmake --build /home/halimatou-cisse/ros2_demos/ros2_control_demos/build/ros2_control_demo_description -- -j4 -l4
+[1.305s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/halimatou-cisse/ros2_demos/ros2_control_demos/build/ros2_control_demo_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_testing:/opt/ros/humble /usr/bin/cmake --install /home/halimatou-cisse/ros2_demos/ros2_control_demos/build/ros2_control_demo_description
+[1.350s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(ros2_control_demo_description)
+[1.351s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/halimatou-cisse/ros2_demos/ros2_control_demos/build/ros2_control_demo_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_testing:/opt/ros/humble /usr/bin/cmake --install /home/halimatou-cisse/ros2_demos/ros2_control_demos/build/ros2_control_demo_description
+[1.357s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description' for CMake module files
+[1.358s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description' for CMake config files
+[1.359s] Level 1:colcon.colcon_core.shell:create_environment_hook('ros2_control_demo_description', 'cmake_prefix_path')
+[1.360s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description/share/ros2_control_demo_description/hook/cmake_prefix_path.ps1'
+[1.360s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description/share/ros2_control_demo_description/hook/cmake_prefix_path.dsv'
+[1.361s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description/share/ros2_control_demo_description/hook/cmake_prefix_path.sh'
+[1.362s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description/bin'
+[1.362s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description/lib/pkgconfig/ros2_control_demo_description.pc'
+[1.362s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description/lib/python3.10/site-packages'
+[1.363s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description/bin'
+[1.363s] INFO:colcon.colcon_core.shell:Creating package script '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description/share/ros2_control_demo_description/package.ps1'
+[1.364s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description/share/ros2_control_demo_description/package.dsv'
+[1.365s] INFO:colcon.colcon_core.shell:Creating package script '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description/share/ros2_control_demo_description/package.sh'
+[1.366s] INFO:colcon.colcon_core.shell:Creating package script '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description/share/ros2_control_demo_description/package.bash'
+[1.367s] INFO:colcon.colcon_core.shell:Creating package script '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description/share/ros2_control_demo_description/package.zsh'
+[1.368s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description/share/colcon-core/packages/ros2_control_demo_description)
+[1.401s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(ros2_control_demo_description)
+[1.401s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description' for CMake module files
+[1.402s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description' for CMake config files
+[1.403s] Level 1:colcon.colcon_core.shell:create_environment_hook('ros2_control_demo_description', 'cmake_prefix_path')
+[1.404s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description/share/ros2_control_demo_description/hook/cmake_prefix_path.ps1'
+[1.404s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description/share/ros2_control_demo_description/hook/cmake_prefix_path.dsv'
+[1.405s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description/share/ros2_control_demo_description/hook/cmake_prefix_path.sh'
+[1.406s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description/bin'
+[1.406s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description/lib/pkgconfig/ros2_control_demo_description.pc'
+[1.406s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description/lib/python3.10/site-packages'
+[1.406s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description/bin'
+[1.407s] INFO:colcon.colcon_core.shell:Creating package script '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description/share/ros2_control_demo_description/package.ps1'
+[1.407s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description/share/ros2_control_demo_description/package.dsv'
+[1.408s] INFO:colcon.colcon_core.shell:Creating package script '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description/share/ros2_control_demo_description/package.sh'
+[1.409s] INFO:colcon.colcon_core.shell:Creating package script '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description/share/ros2_control_demo_description/package.bash'
+[1.409s] INFO:colcon.colcon_core.shell:Creating package script '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description/share/ros2_control_demo_description/package.zsh'
+[1.410s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description/share/colcon-core/packages/ros2_control_demo_description)
+[2.102s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/halimatou-cisse/ros2_demos/ros2_control_demos/build/ros2_control_demo_testing': PYTHONPATH=/home/halimatou-cisse/ros2_demos/ros2_control_demos/build/ros2_control_demo_testing/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_testing/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/halimatou-cisse/ros2_demos/ros2_control_demos/build/ros2_control_demo_testing/build --no-deps symlink_data
+[2.863s] Level 1:colcon.colcon_core.shell:create_environment_hook('ros2_control_demo_testing', 'pythonpath_develop')
+[2.864s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/halimatou-cisse/ros2_demos/ros2_control_demos/build/ros2_control_demo_testing/share/ros2_control_demo_testing/hook/pythonpath_develop.ps1'
+[2.865s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/halimatou-cisse/ros2_demos/ros2_control_demos/build/ros2_control_demo_testing' returned '0': PYTHONPATH=/home/halimatou-cisse/ros2_demos/ros2_control_demos/build/ros2_control_demo_testing/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_testing/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/halimatou-cisse/ros2_demos/ros2_control_demos/build/ros2_control_demo_testing/build --no-deps symlink_data
+[2.865s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/halimatou-cisse/ros2_demos/ros2_control_demos/build/ros2_control_demo_testing/share/ros2_control_demo_testing/hook/pythonpath_develop.dsv'
+[2.866s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/halimatou-cisse/ros2_demos/ros2_control_demos/build/ros2_control_demo_testing/share/ros2_control_demo_testing/hook/pythonpath_develop.sh'
+[2.866s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_testing' for CMake module files
+[2.867s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_testing' for CMake config files
+[2.868s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_testing/lib'
+[2.868s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_testing/bin'
+[2.868s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_testing/lib/pkgconfig/ros2_control_demo_testing.pc'
+[2.869s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_testing/lib/python3.10/site-packages'
+[2.869s] Level 1:colcon.colcon_core.shell:create_environment_hook('ros2_control_demo_testing', 'pythonpath')
+[2.869s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_testing/share/ros2_control_demo_testing/hook/pythonpath.ps1'
+[2.870s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_testing/share/ros2_control_demo_testing/hook/pythonpath.dsv'
+[2.870s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_testing/share/ros2_control_demo_testing/hook/pythonpath.sh'
+[2.871s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_testing/bin'
+[2.871s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(ros2_control_demo_testing)
+[2.872s] INFO:colcon.colcon_core.shell:Creating package script '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_testing/share/ros2_control_demo_testing/package.ps1'
+[2.873s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_testing/share/ros2_control_demo_testing/package.dsv'
+[2.873s] INFO:colcon.colcon_core.shell:Creating package script '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_testing/share/ros2_control_demo_testing/package.sh'
+[2.874s] INFO:colcon.colcon_core.shell:Creating package script '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_testing/share/ros2_control_demo_testing/package.bash'
+[2.874s] INFO:colcon.colcon_core.shell:Creating package script '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_testing/share/ros2_control_demo_testing/package.zsh'
+[2.875s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_testing/share/colcon-core/packages/ros2_control_demo_testing)
+[2.875s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/halimatou-cisse/ros2_demos/ros2_control_demos/ackermann' with build type 'ament_cmake'
+[2.876s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/halimatou-cisse/ros2_demos/ros2_control_demos/ackermann'
+[2.876s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[2.876s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[2.892s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/halimatou-cisse/ros2_demos/ros2_control_demos/build/ros2_control_demo_example_11': AMENT_PREFIX_PATH=/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_testing:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description:/opt/ros/humble CMAKE_PREFIX_PATH=/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_testing:/opt/ros/humble /usr/bin/cmake --build /home/halimatou-cisse/ros2_demos/ros2_control_demos/build/ros2_control_demo_example_11 -- -j4 -l4
+[3.002s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/halimatou-cisse/ros2_demos/ros2_control_demos/build/ros2_control_demo_example_11' returned '0': AMENT_PREFIX_PATH=/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_testing:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description:/opt/ros/humble CMAKE_PREFIX_PATH=/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_testing:/opt/ros/humble /usr/bin/cmake --build /home/halimatou-cisse/ros2_demos/ros2_control_demos/build/ros2_control_demo_example_11 -- -j4 -l4
+[3.040s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/halimatou-cisse/ros2_demos/ros2_control_demos/build/ros2_control_demo_example_11': AMENT_PREFIX_PATH=/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_testing:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description:/opt/ros/humble CMAKE_PREFIX_PATH=/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_testing:/opt/ros/humble /usr/bin/cmake --install /home/halimatou-cisse/ros2_demos/ros2_control_demos/build/ros2_control_demo_example_11
+[3.081s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(ros2_control_demo_example_11)
+[3.082s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11' for CMake module files
+[3.083s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/halimatou-cisse/ros2_demos/ros2_control_demos/build/ros2_control_demo_example_11' returned '0': AMENT_PREFIX_PATH=/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_testing:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description:/opt/ros/humble CMAKE_PREFIX_PATH=/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_testing:/opt/ros/humble /usr/bin/cmake --install /home/halimatou-cisse/ros2_demos/ros2_control_demos/build/ros2_control_demo_example_11
+[3.083s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11' for CMake config files
+[3.084s] Level 1:colcon.colcon_core.shell:create_environment_hook('ros2_control_demo_example_11', 'cmake_prefix_path')
+[3.084s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11/share/ros2_control_demo_example_11/hook/cmake_prefix_path.ps1'
+[3.085s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11/share/ros2_control_demo_example_11/hook/cmake_prefix_path.dsv'
+[3.085s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11/share/ros2_control_demo_example_11/hook/cmake_prefix_path.sh'
+[3.086s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11/lib'
+[3.086s] Level 1:colcon.colcon_core.shell:create_environment_hook('ros2_control_demo_example_11', 'ld_library_path_lib')
+[3.087s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11/share/ros2_control_demo_example_11/hook/ld_library_path_lib.ps1'
+[3.087s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11/share/ros2_control_demo_example_11/hook/ld_library_path_lib.dsv'
+[3.088s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11/share/ros2_control_demo_example_11/hook/ld_library_path_lib.sh'
+[3.088s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11/bin'
+[3.088s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11/lib/pkgconfig/ros2_control_demo_example_11.pc'
+[3.088s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11/lib/python3.10/site-packages'
+[3.089s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11/bin'
+[3.090s] INFO:colcon.colcon_core.shell:Creating package script '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11/share/ros2_control_demo_example_11/package.ps1'
+[3.091s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11/share/ros2_control_demo_example_11/package.dsv'
+[3.092s] INFO:colcon.colcon_core.shell:Creating package script '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11/share/ros2_control_demo_example_11/package.sh'
+[3.093s] INFO:colcon.colcon_core.shell:Creating package script '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11/share/ros2_control_demo_example_11/package.bash'
+[3.093s] INFO:colcon.colcon_core.shell:Creating package script '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11/share/ros2_control_demo_example_11/package.zsh'
+[3.094s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11/share/colcon-core/packages/ros2_control_demo_example_11)
+[3.131s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(ros2_control_demo_example_11)
+[3.131s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11' for CMake module files
+[3.132s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11' for CMake config files
+[3.132s] Level 1:colcon.colcon_core.shell:create_environment_hook('ros2_control_demo_example_11', 'cmake_prefix_path')
+[3.133s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11/share/ros2_control_demo_example_11/hook/cmake_prefix_path.ps1'
+[3.133s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11/share/ros2_control_demo_example_11/hook/cmake_prefix_path.dsv'
+[3.134s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11/share/ros2_control_demo_example_11/hook/cmake_prefix_path.sh'
+[3.134s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11/lib'
+[3.135s] Level 1:colcon.colcon_core.shell:create_environment_hook('ros2_control_demo_example_11', 'ld_library_path_lib')
+[3.135s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11/share/ros2_control_demo_example_11/hook/ld_library_path_lib.ps1'
+[3.135s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11/share/ros2_control_demo_example_11/hook/ld_library_path_lib.dsv'
+[3.136s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11/share/ros2_control_demo_example_11/hook/ld_library_path_lib.sh'
+[3.137s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11/bin'
+[3.137s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11/lib/pkgconfig/ros2_control_demo_example_11.pc'
+[3.137s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11/lib/python3.10/site-packages'
+[3.137s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11/bin'
+[3.138s] INFO:colcon.colcon_core.shell:Creating package script '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11/share/ros2_control_demo_example_11/package.ps1'
+[3.139s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11/share/ros2_control_demo_example_11/package.dsv'
+[3.139s] INFO:colcon.colcon_core.shell:Creating package script '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11/share/ros2_control_demo_example_11/package.sh'
+[3.140s] INFO:colcon.colcon_core.shell:Creating package script '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11/share/ros2_control_demo_example_11/package.bash'
+[3.141s] INFO:colcon.colcon_core.shell:Creating package script '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11/share/ros2_control_demo_example_11/package.zsh'
+[3.141s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11/share/colcon-core/packages/ros2_control_demo_example_11)
+[3.142s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/halimatou-cisse/ros2_demos/ros2_control_demos/ros2_control_demos' with build type 'ament_cmake'
+[3.142s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/halimatou-cisse/ros2_demos/ros2_control_demos/ros2_control_demos'
+[3.143s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[3.143s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[3.166s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/halimatou-cisse/ros2_demos/ros2_control_demos/build/ros2_control_demos': AMENT_PREFIX_PATH=/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_testing:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description:/opt/ros/humble CMAKE_PREFIX_PATH=/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_testing:/opt/ros/humble /usr/bin/cmake --build /home/halimatou-cisse/ros2_demos/ros2_control_demos/build/ros2_control_demos -- -j4 -l4
+[3.219s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/halimatou-cisse/ros2_demos/ros2_control_demos/build/ros2_control_demos' returned '0': AMENT_PREFIX_PATH=/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_testing:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description:/opt/ros/humble CMAKE_PREFIX_PATH=/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_testing:/opt/ros/humble /usr/bin/cmake --build /home/halimatou-cisse/ros2_demos/ros2_control_demos/build/ros2_control_demos -- -j4 -l4
+[3.252s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/halimatou-cisse/ros2_demos/ros2_control_demos/build/ros2_control_demos': AMENT_PREFIX_PATH=/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_testing:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description:/opt/ros/humble CMAKE_PREFIX_PATH=/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_testing:/opt/ros/humble /usr/bin/cmake --install /home/halimatou-cisse/ros2_demos/ros2_control_demos/build/ros2_control_demos
+[3.281s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(ros2_control_demos)
+[3.282s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos' for CMake module files
+[3.282s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/halimatou-cisse/ros2_demos/ros2_control_demos/build/ros2_control_demos' returned '0': AMENT_PREFIX_PATH=/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_testing:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description:/opt/ros/humble CMAKE_PREFIX_PATH=/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_example_11:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_description:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos:/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demo_testing:/opt/ros/humble /usr/bin/cmake --install /home/halimatou-cisse/ros2_demos/ros2_control_demos/build/ros2_control_demos
+[3.283s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos' for CMake config files
+[3.284s] Level 1:colcon.colcon_core.shell:create_environment_hook('ros2_control_demos', 'cmake_prefix_path')
+[3.284s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos/share/ros2_control_demos/hook/cmake_prefix_path.ps1'
+[3.284s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos/share/ros2_control_demos/hook/cmake_prefix_path.dsv'
+[3.285s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos/share/ros2_control_demos/hook/cmake_prefix_path.sh'
+[3.286s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos/bin'
+[3.286s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos/lib/pkgconfig/ros2_control_demos.pc'
+[3.286s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos/lib/python3.10/site-packages'
+[3.286s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos/bin'
+[3.287s] INFO:colcon.colcon_core.shell:Creating package script '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos/share/ros2_control_demos/package.ps1'
+[3.287s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos/share/ros2_control_demos/package.dsv'
+[3.288s] INFO:colcon.colcon_core.shell:Creating package script '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos/share/ros2_control_demos/package.sh'
+[3.288s] INFO:colcon.colcon_core.shell:Creating package script '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos/share/ros2_control_demos/package.bash'
+[3.289s] INFO:colcon.colcon_core.shell:Creating package script '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos/share/ros2_control_demos/package.zsh'
+[3.290s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos/share/colcon-core/packages/ros2_control_demos)
+[3.325s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(ros2_control_demos)
+[3.326s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos' for CMake module files
+[3.326s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos' for CMake config files
+[3.327s] Level 1:colcon.colcon_core.shell:create_environment_hook('ros2_control_demos', 'cmake_prefix_path')
+[3.327s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos/share/ros2_control_demos/hook/cmake_prefix_path.ps1'
+[3.328s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos/share/ros2_control_demos/hook/cmake_prefix_path.dsv'
+[3.329s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos/share/ros2_control_demos/hook/cmake_prefix_path.sh'
+[3.329s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos/bin'
+[3.329s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos/lib/pkgconfig/ros2_control_demos.pc'
+[3.330s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos/lib/python3.10/site-packages'
+[3.330s] Level 1:colcon.colcon_core.environment:checking '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos/bin'
+[3.331s] INFO:colcon.colcon_core.shell:Creating package script '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos/share/ros2_control_demos/package.ps1'
+[3.331s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos/share/ros2_control_demos/package.dsv'
+[3.332s] INFO:colcon.colcon_core.shell:Creating package script '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos/share/ros2_control_demos/package.sh'
+[3.333s] INFO:colcon.colcon_core.shell:Creating package script '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos/share/ros2_control_demos/package.bash'
+[3.333s] INFO:colcon.colcon_core.shell:Creating package script '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos/share/ros2_control_demos/package.zsh'
+[3.334s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/ros2_control_demos/share/colcon-core/packages/ros2_control_demos)
+[3.334s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[3.335s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[3.335s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[3.335s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[3.342s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[3.342s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[3.342s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[3.355s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[3.355s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/local_setup.ps1'
+[3.357s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/_local_setup_util_ps1.py'
+[3.359s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/setup.ps1'
+[3.361s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/local_setup.sh'
+[3.363s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/_local_setup_util_sh.py'
+[3.364s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/setup.sh'
+[3.366s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/local_setup.bash'
+[3.368s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/setup.bash'
+[3.370s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/local_setup.zsh'
+[3.372s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/halimatou-cisse/ros2_demos/ros2_control_demos/install/setup.zsh'
