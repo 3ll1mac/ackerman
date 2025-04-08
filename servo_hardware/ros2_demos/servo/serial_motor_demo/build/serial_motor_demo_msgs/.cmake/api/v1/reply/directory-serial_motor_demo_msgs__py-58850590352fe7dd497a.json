@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "serial_motor_demo_msgs__py",
+		"source" : "/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/build/serial_motor_demo_msgs/serial_motor_demo_msgs__py"
+	}
+}

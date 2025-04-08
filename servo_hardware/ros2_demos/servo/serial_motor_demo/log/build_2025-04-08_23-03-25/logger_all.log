@@ -1,0 +1,194 @@
+[0.116s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[0.117s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=5, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x71e7e9c850a0>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x71e7e9c84a10>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x71e7e9c84a10>>, mixin_verb=('build',))
+[0.176s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.176s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.176s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.176s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.176s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.176s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.176s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo'
+[0.176s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.176s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.176s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.177s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.177s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.177s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.177s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.177s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.177s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.211s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.211s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.211s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.211s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.211s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.211s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.211s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.212s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.212s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.212s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.212s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.212s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.212s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.212s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.212s] Level 1:colcon.colcon_core.package_identification:_identify(serial_motor_demo) by extensions ['ignore', 'ignore_ament_install']
+[0.213s] Level 1:colcon.colcon_core.package_identification:_identify(serial_motor_demo) by extension 'ignore'
+[0.213s] Level 1:colcon.colcon_core.package_identification:_identify(serial_motor_demo) by extension 'ignore_ament_install'
+[0.213s] Level 1:colcon.colcon_core.package_identification:_identify(serial_motor_demo) by extensions ['colcon_pkg']
+[0.213s] Level 1:colcon.colcon_core.package_identification:_identify(serial_motor_demo) by extension 'colcon_pkg'
+[0.213s] Level 1:colcon.colcon_core.package_identification:_identify(serial_motor_demo) by extensions ['colcon_meta']
+[0.213s] Level 1:colcon.colcon_core.package_identification:_identify(serial_motor_demo) by extension 'colcon_meta'
+[0.213s] Level 1:colcon.colcon_core.package_identification:_identify(serial_motor_demo) by extensions ['ros']
+[0.213s] Level 1:colcon.colcon_core.package_identification:_identify(serial_motor_demo) by extension 'ros'
+[0.216s] DEBUG:colcon.colcon_core.package_identification:Package 'serial_motor_demo' with type 'ros.ament_python' and name 'serial_motor_demo'
+[0.216s] Level 1:colcon.colcon_core.package_identification:_identify(serial_motor_demo_msgs) by extensions ['ignore', 'ignore_ament_install']
+[0.216s] Level 1:colcon.colcon_core.package_identification:_identify(serial_motor_demo_msgs) by extension 'ignore'
+[0.216s] Level 1:colcon.colcon_core.package_identification:_identify(serial_motor_demo_msgs) by extension 'ignore_ament_install'
+[0.216s] Level 1:colcon.colcon_core.package_identification:_identify(serial_motor_demo_msgs) by extensions ['colcon_pkg']
+[0.217s] Level 1:colcon.colcon_core.package_identification:_identify(serial_motor_demo_msgs) by extension 'colcon_pkg'
+[0.217s] Level 1:colcon.colcon_core.package_identification:_identify(serial_motor_demo_msgs) by extensions ['colcon_meta']
+[0.217s] Level 1:colcon.colcon_core.package_identification:_identify(serial_motor_demo_msgs) by extension 'colcon_meta'
+[0.217s] Level 1:colcon.colcon_core.package_identification:_identify(serial_motor_demo_msgs) by extensions ['ros']
+[0.217s] Level 1:colcon.colcon_core.package_identification:_identify(serial_motor_demo_msgs) by extension 'ros'
+[0.217s] DEBUG:colcon.colcon_core.package_identification:Package 'serial_motor_demo_msgs' with type 'ros.ament_cmake' and name 'serial_motor_demo_msgs'
+[0.217s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.218s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.218s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.218s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.218s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.240s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.240s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.243s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 2 installed packages in /home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install
+[0.244s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /home/ellimac-backup/Documents/ackerman/ackerman_robot/install
+[0.248s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 364 installed packages in /opt/ros/jazzy
+[0.249s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.324s] Level 5:colcon.colcon_core.verb:set package 'serial_motor_demo_msgs' build argument 'cmake_args' from command line to 'None'
+[0.324s] Level 5:colcon.colcon_core.verb:set package 'serial_motor_demo_msgs' build argument 'cmake_target' from command line to 'None'
+[0.324s] Level 5:colcon.colcon_core.verb:set package 'serial_motor_demo_msgs' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.324s] Level 5:colcon.colcon_core.verb:set package 'serial_motor_demo_msgs' build argument 'cmake_clean_cache' from command line to 'False'
+[0.324s] Level 5:colcon.colcon_core.verb:set package 'serial_motor_demo_msgs' build argument 'cmake_clean_first' from command line to 'False'
+[0.324s] Level 5:colcon.colcon_core.verb:set package 'serial_motor_demo_msgs' build argument 'cmake_force_configure' from command line to 'False'
+[0.324s] Level 5:colcon.colcon_core.verb:set package 'serial_motor_demo_msgs' build argument 'ament_cmake_args' from command line to 'None'
+[0.324s] Level 5:colcon.colcon_core.verb:set package 'serial_motor_demo_msgs' build argument 'catkin_cmake_args' from command line to 'None'
+[0.324s] Level 5:colcon.colcon_core.verb:set package 'serial_motor_demo_msgs' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.324s] DEBUG:colcon.colcon_core.verb:Building package 'serial_motor_demo_msgs' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/build/serial_motor_demo_msgs', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs', 'merge_install': False, 'path': '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/serial_motor_demo_msgs', 'symlink_install': False, 'test_result_base': None}
+[0.325s] Level 5:colcon.colcon_core.verb:set package 'serial_motor_demo' build argument 'cmake_args' from command line to 'None'
+[0.325s] Level 5:colcon.colcon_core.verb:set package 'serial_motor_demo' build argument 'cmake_target' from command line to 'None'
+[0.325s] Level 5:colcon.colcon_core.verb:set package 'serial_motor_demo' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.325s] Level 5:colcon.colcon_core.verb:set package 'serial_motor_demo' build argument 'cmake_clean_cache' from command line to 'False'
+[0.325s] Level 5:colcon.colcon_core.verb:set package 'serial_motor_demo' build argument 'cmake_clean_first' from command line to 'False'
+[0.325s] Level 5:colcon.colcon_core.verb:set package 'serial_motor_demo' build argument 'cmake_force_configure' from command line to 'False'
+[0.325s] Level 5:colcon.colcon_core.verb:set package 'serial_motor_demo' build argument 'ament_cmake_args' from command line to 'None'
+[0.325s] Level 5:colcon.colcon_core.verb:set package 'serial_motor_demo' build argument 'catkin_cmake_args' from command line to 'None'
+[0.325s] Level 5:colcon.colcon_core.verb:set package 'serial_motor_demo' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.325s] DEBUG:colcon.colcon_core.verb:Building package 'serial_motor_demo' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/build/serial_motor_demo', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo', 'merge_install': False, 'path': '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/serial_motor_demo', 'symlink_install': False, 'test_result_base': None}
+[0.325s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.326s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.327s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/serial_motor_demo_msgs' with build type 'ament_cmake'
+[0.327s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/serial_motor_demo_msgs'
+[0.330s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.330s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.330s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.348s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/build/serial_motor_demo_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/build/serial_motor_demo_msgs -- -j5 -l5
+[0.742s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/build/serial_motor_demo_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/build/serial_motor_demo_msgs -- -j5 -l5
+[0.759s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/build/serial_motor_demo_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/build/serial_motor_demo_msgs
+[0.837s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(serial_motor_demo_msgs)
+[0.838s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/build/serial_motor_demo_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/build/serial_motor_demo_msgs
+[0.842s] Level 1:colcon.colcon_core.environment:checking '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs' for CMake module files
+[0.844s] Level 1:colcon.colcon_core.environment:checking '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs' for CMake config files
+[0.844s] Level 1:colcon.colcon_core.shell:create_environment_hook('serial_motor_demo_msgs', 'cmake_prefix_path')
+[0.845s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs/share/serial_motor_demo_msgs/hook/cmake_prefix_path.ps1'
+[0.845s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs/share/serial_motor_demo_msgs/hook/cmake_prefix_path.dsv'
+[0.846s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs/share/serial_motor_demo_msgs/hook/cmake_prefix_path.sh'
+[0.847s] Level 1:colcon.colcon_core.environment:checking '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs/lib'
+[0.847s] Level 1:colcon.colcon_core.shell:create_environment_hook('serial_motor_demo_msgs', 'ld_library_path_lib')
+[0.848s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs/share/serial_motor_demo_msgs/hook/ld_library_path_lib.ps1'
+[0.848s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs/share/serial_motor_demo_msgs/hook/ld_library_path_lib.dsv'
+[0.849s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs/share/serial_motor_demo_msgs/hook/ld_library_path_lib.sh'
+[0.849s] Level 1:colcon.colcon_core.environment:checking '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs/bin'
+[0.849s] Level 1:colcon.colcon_core.environment:checking '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs/lib/pkgconfig/serial_motor_demo_msgs.pc'
+[0.850s] Level 1:colcon.colcon_core.environment:checking '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs/lib/python3.12/site-packages'
+[0.850s] Level 1:colcon.colcon_core.shell:create_environment_hook('serial_motor_demo_msgs', 'pythonpath')
+[0.850s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs/share/serial_motor_demo_msgs/hook/pythonpath.ps1'
+[0.851s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs/share/serial_motor_demo_msgs/hook/pythonpath.dsv'
+[0.851s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs/share/serial_motor_demo_msgs/hook/pythonpath.sh'
+[0.852s] Level 1:colcon.colcon_core.environment:checking '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs/bin'
+[0.852s] INFO:colcon.colcon_core.shell:Creating package script '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs/share/serial_motor_demo_msgs/package.ps1'
+[0.853s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs/share/serial_motor_demo_msgs/package.dsv'
+[0.854s] INFO:colcon.colcon_core.shell:Creating package script '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs/share/serial_motor_demo_msgs/package.sh'
+[0.854s] INFO:colcon.colcon_core.shell:Creating package script '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs/share/serial_motor_demo_msgs/package.bash'
+[0.855s] INFO:colcon.colcon_core.shell:Creating package script '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs/share/serial_motor_demo_msgs/package.zsh'
+[0.856s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs/share/colcon-core/packages/serial_motor_demo_msgs)
+[0.857s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(serial_motor_demo_msgs)
+[0.857s] Level 1:colcon.colcon_core.environment:checking '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs' for CMake module files
+[0.858s] Level 1:colcon.colcon_core.environment:checking '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs' for CMake config files
+[0.859s] Level 1:colcon.colcon_core.shell:create_environment_hook('serial_motor_demo_msgs', 'cmake_prefix_path')
+[0.859s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs/share/serial_motor_demo_msgs/hook/cmake_prefix_path.ps1'
+[0.859s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs/share/serial_motor_demo_msgs/hook/cmake_prefix_path.dsv'
+[0.860s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs/share/serial_motor_demo_msgs/hook/cmake_prefix_path.sh'
+[0.861s] Level 1:colcon.colcon_core.environment:checking '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs/lib'
+[0.861s] Level 1:colcon.colcon_core.shell:create_environment_hook('serial_motor_demo_msgs', 'ld_library_path_lib')
+[0.861s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs/share/serial_motor_demo_msgs/hook/ld_library_path_lib.ps1'
+[0.862s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs/share/serial_motor_demo_msgs/hook/ld_library_path_lib.dsv'
+[0.862s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs/share/serial_motor_demo_msgs/hook/ld_library_path_lib.sh'
+[0.863s] Level 1:colcon.colcon_core.environment:checking '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs/bin'
+[0.863s] Level 1:colcon.colcon_core.environment:checking '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs/lib/pkgconfig/serial_motor_demo_msgs.pc'
+[0.863s] Level 1:colcon.colcon_core.environment:checking '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs/lib/python3.12/site-packages'
+[0.863s] Level 1:colcon.colcon_core.shell:create_environment_hook('serial_motor_demo_msgs', 'pythonpath')
+[0.863s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs/share/serial_motor_demo_msgs/hook/pythonpath.ps1'
+[0.864s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs/share/serial_motor_demo_msgs/hook/pythonpath.dsv'
+[0.864s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs/share/serial_motor_demo_msgs/hook/pythonpath.sh'
+[0.865s] Level 1:colcon.colcon_core.environment:checking '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs/bin'
+[0.865s] INFO:colcon.colcon_core.shell:Creating package script '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs/share/serial_motor_demo_msgs/package.ps1'
+[0.866s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs/share/serial_motor_demo_msgs/package.dsv'
+[0.867s] INFO:colcon.colcon_core.shell:Creating package script '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs/share/serial_motor_demo_msgs/package.sh'
+[0.867s] INFO:colcon.colcon_core.shell:Creating package script '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs/share/serial_motor_demo_msgs/package.bash'
+[0.868s] INFO:colcon.colcon_core.shell:Creating package script '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs/share/serial_motor_demo_msgs/package.zsh'
+[0.868s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs/share/colcon-core/packages/serial_motor_demo_msgs)
+[0.869s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/serial_motor_demo' with build type 'ament_python'
+[0.872s] Level 1:colcon.colcon_core.shell:create_environment_hook('serial_motor_demo', 'ament_prefix_path')
+[0.872s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo/share/serial_motor_demo/hook/ament_prefix_path.ps1'
+[0.872s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo/share/serial_motor_demo/hook/ament_prefix_path.dsv'
+[0.873s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo/share/serial_motor_demo/hook/ament_prefix_path.sh'
+[0.873s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.874s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.188s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/serial_motor_demo'
+[1.189s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.189s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.761s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/serial_motor_demo': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/build/serial_motor_demo/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo/lib/python3.12/site-packages:/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs/lib/python3.12/site-packages:/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/serial_motor_demo build --build-base /home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/build/serial_motor_demo/build install --record /home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/build/serial_motor_demo/install.log --single-version-externally-managed install_data
+[2.564s] Level 1:colcon.colcon_core.environment:checking '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo' for CMake module files
+[2.565s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/serial_motor_demo' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/build/serial_motor_demo/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo/lib/python3.12/site-packages:/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo_msgs/lib/python3.12/site-packages:/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/serial_motor_demo build --build-base /home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/build/serial_motor_demo/build install --record /home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/build/serial_motor_demo/install.log --single-version-externally-managed install_data
+[2.565s] Level 1:colcon.colcon_core.environment:checking '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo' for CMake config files
+[2.566s] Level 1:colcon.colcon_core.environment:checking '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo/lib'
+[2.567s] Level 1:colcon.colcon_core.environment:checking '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo/bin'
+[2.567s] Level 1:colcon.colcon_core.environment:checking '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo/lib/pkgconfig/serial_motor_demo.pc'
+[2.567s] Level 1:colcon.colcon_core.environment:checking '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo/lib/python3.12/site-packages'
+[2.567s] Level 1:colcon.colcon_core.shell:create_environment_hook('serial_motor_demo', 'pythonpath')
+[2.567s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo/share/serial_motor_demo/hook/pythonpath.ps1'
+[2.568s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo/share/serial_motor_demo/hook/pythonpath.dsv'
+[2.568s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo/share/serial_motor_demo/hook/pythonpath.sh'
+[2.569s] Level 1:colcon.colcon_core.environment:checking '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo/bin'
+[2.569s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(serial_motor_demo)
+[2.570s] INFO:colcon.colcon_core.shell:Creating package script '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo/share/serial_motor_demo/package.ps1'
+[2.570s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo/share/serial_motor_demo/package.dsv'
+[2.571s] INFO:colcon.colcon_core.shell:Creating package script '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo/share/serial_motor_demo/package.sh'
+[2.571s] INFO:colcon.colcon_core.shell:Creating package script '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo/share/serial_motor_demo/package.bash'
+[2.572s] INFO:colcon.colcon_core.shell:Creating package script '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo/share/serial_motor_demo/package.zsh'
+[2.573s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/serial_motor_demo/share/colcon-core/packages/serial_motor_demo)
+[2.573s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[2.574s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[2.574s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[2.574s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[2.583s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[2.584s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[2.584s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[2.606s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[2.606s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/local_setup.ps1'
+[2.608s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/_local_setup_util_ps1.py'
+[2.609s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/setup.ps1'
+[2.612s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/local_setup.sh'
+[2.613s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/_local_setup_util_sh.py'
+[2.614s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/setup.sh'
+[2.616s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/local_setup.bash'
+[2.616s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/setup.bash'
+[2.618s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/local_setup.zsh'
+[2.618s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/ellimac-backup/Documents/ackerman/servo_hardware/ros2_demos/servo/serial_motor_demo/install/setup.zsh'

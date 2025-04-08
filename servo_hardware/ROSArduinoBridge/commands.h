@@ -19,9 +19,9 @@
 #define UPDATE_PID     'u'
 #define DIGITAL_WRITE  'w'
 #define ANALOG_WRITE   'x'
+#define STEERING_RIGHT  0
+#define STEERING_LEFT   1
 #define LEFT            0
 #define RIGHT           1
 
 #endif
-
-
