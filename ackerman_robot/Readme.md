@@ -14,11 +14,11 @@ $  ros2 launch ackerman_robot ackermann_drive_example.launch.py
 
 ## Ros control
 
-First, the current ackermann project was based on the <a link="https://github.com/ros-controls/gz_ros2_control/tree/rolling/gz_ros2_control_demos/examples">ros_control_demo</a>. They already have an ackermann example that can be tested with the example_ackermann_drive.cpp.
+First, the current ackermann project was based on the (https://github.com/ros-controls/gz_ros2_control/tree/rolling/gz_ros2_control_demos/examples)ros_control_demo. They already have an ackermann example that can be tested with the example_ackermann_drive.cpp.
 
 After that, the teleop key node can be added to the launch file with the valid remap from <code>/cmd_vel</code> to <code>controller_name>/reference</code>.
 
-In order to move the ackerman robot, the <a link="https://control.ros.org/rolling/doc/ros2_controllers/steering_controllers_library/doc/userdoc.html#steering-controllers-library-userdoc">steering_controllers_library</a> was used. It already handles the ackermann project where the wheels on one axis are fixed (traction/drive) wheels, and the wheels on the other axis are steerable.
+In order to move the ackerman robot, the steering_controllers_library (https://control.ros.org/rolling/doc/ros2_controllers/steering_controllers_library/doc/userdoc.html#steering-controllers-library-userdoc) was used. It already handles the ackermann project where the wheels on one axis are fixed (traction/drive) wheels, and the wheels on the other axis are steerable.
 
 ## Overall working
 
@@ -33,7 +33,7 @@ First we can notice that the two back (or rear) wheels have a <code>command_inte
 
 On the contrary the two front wheels have <code>command_interface</code> and <code>state_interface</code> for position and nothing for velocity.
 
-So, these two interface are from the <a link="http://docs.ros.org/en/melodic/api/hardware_interface/html/c++/index.html">Hardware interfaces</a> and to quote the website:"Hardware interfaces are used by ROS control in conjunction with one of the available ROS controllers to **send** (hardware_interface::RobotHW::write) **commands** to the hardware and **receive** (hardware_interface::RobotHW::read) **states** from the robot's resources (joints, sensors, actuators)."
+So, these two interface are from the Hardware interfaces(http://docs.ros.org/en/melodic/api/hardware_interface/html/c++/index.html)) and to quote the website:"Hardware interfaces are used by ROS control in conjunction with one of the available ROS controllers to **send** (hardware_interface::RobotHW::write) **commands** to the hardware and **receive** (hardware_interface::RobotHW::read) **states** from the robot's resources (joints, sensors, actuators)."
 
 We can summarize by saying ros_control send <i>data</i> to the joint in the command tag et take <i>data</i> from the state tags.
 
@@ -74,11 +74,11 @@ The <code>cmd_vel</code> is remapped to the <code>ackermann_steering_controller/
 
 So for ros_control documentation, first the official documentation:
 
-The github repository where you can find demos (including ackermann demo) : <a link="https://github.com/ros-controls/gz_ros2_control/tree/rolling/gz_ros2_control_demos/examples">ros_control_demo</a>
+The github repository where you can find demos (including ackermann demo) :ros_control_demo (https://github.com/ros-controls/gz_ros2_control/tree/rolling/gz_ros2_control_demos/examples)
 
-The documentation for the <a link="https://control.ros.org/rolling/doc/ros2_controllers/steering_controllers_library/doc/userdoc.html#steering-controllers-library-userdoc" >steering_controllers_library</a>, linked with the ros_control_demo and very useful.
+The documentation for the steering_controllers_library(https://control.ros.org/rolling/doc/ros2_controllers/steering_controllers_library/doc/userdoc.html#steering-controllers-library-userdoc), linked with the ros_control_demo and very useful.
 
-This parts ends with <a link="https://fjp.at/posts/ros/ros-control/">this </a> not official website explaining rather well ros_control and its inner working for beginners. 
+This parts ends with this (https://fjp.at/posts/ros/ros-control/) not official website explaining rather well ros_control and its inner working for beginners. 
 
 
 # Documentation
