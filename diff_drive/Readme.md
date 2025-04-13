@@ -43,7 +43,7 @@ $ . install/setup.bash
 $  ros2 launch diff_drive vehicule.launch.py 
 ```
 
-To make the robot move add the KeyOublisher plugin the the top right corner. For more information go to the my_robot_description package.
+To make the robot move add the KeyPublisher plugin the the top right corner. For more information go to the my_robot_description package.
 
 # Documentation
 
