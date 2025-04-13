@@ -1,6 +1,6 @@
 # Diff robot
 
-This package containes a lot of different sub-projects that lead to the creation of the final one....
+This package contains a lot of different sub-projects that lead to the creation of the final one....
 
 ## The src directory
 
@@ -28,7 +28,7 @@ The two_wheels.xacro file contains the robot with 2 wheels and a caster wheel.
 ![Texte alternatif](images/two_wheels.png "two_wheels.xacro")
 
 
-The four_wheels.xacro fine contains the cousin of the two_wheels robot. It contains 4 wheels. To solve the issue of the two first ones stopping the movement, I put their friction at 0.
+The four_wheels.xacro file contains the cousin of the two_wheels robot. It contains 4 wheels. To solve the issue of the two front ones stopping the movement, I put their friction at 0.
 
 ![Texte alternatif](images/four_wheels.png "four_wheels.xacro")
 
