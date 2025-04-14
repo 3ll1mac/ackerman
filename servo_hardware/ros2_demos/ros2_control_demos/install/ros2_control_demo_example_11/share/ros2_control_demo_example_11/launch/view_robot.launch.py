@@ -1,1 +1,0 @@
-/home/halimatou-cisse/ros2_demos/ros2_control_demos/ackermann/description/launch/view_robot.launch.py
