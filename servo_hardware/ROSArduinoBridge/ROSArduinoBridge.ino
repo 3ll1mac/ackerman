@@ -169,15 +169,15 @@ int runCommand() {
     case DIGITAL_READ:
       Serial.println(digitalRead(arg1));
       break;
-    case ANALOG_WRITE:
+ /*   case ANALOG_WRITE:
       analogWrite(arg1, arg2);
       Serial.println("OK");
-      break;
-    case DIGITAL_WRITE:
+      break;*/
+/*    case DIGITAL_WRITE:
       if (arg2 == 0) digitalWrite(arg1, LOW);
       else if (arg2 == 1) digitalWrite(arg1, HIGH);
       Serial.println("OK");
-      break;
+      break;*/
     case PIN_MODE:
       if (arg2 == 0) pinMode(arg1, INPUT);
       else if (arg2 == 1) pinMode(arg1, OUTPUT);
@@ -195,10 +195,21 @@ int runCommand() {
       Serial.println(arg2);
       servos[STEERING_RIGHT].setTargetPosition(arg1);
       servos[STEERING_LEFT].setTargetPosition(arg1);
-      Serial.println("OK");
+      Serial.println("OK\n\r");
       break;
-    case SERVO_READ:
+    case SERVO_UPDATE:
+      servos[STEERING_RIGHT].updateTargetPosition(arg1);
+      servos[STEERING_LEFT].updateTargetPosition(arg1);
+      break;
+    
+ /*   case SERVO_READ:
       Serial.println(servos[arg1].getServo().read());
+      break;*/
+#endif
+#ifdef USE_MOTORS
+    case BRUSH_WRITE:
+      motors[STEERING_RIGHT].updateTargetPosition(arg1);
+      motors[STEERING_LEFT].updateTargetPosition(arg1);
       break;
 #endif
 
@@ -234,7 +245,7 @@ int runCommand() {
       setMotorSpeeds(arg1, arg2);
       Serial.println("OK");
       break;
-    case UPDATE_PID:
+ /*   case UPDATE_PID:
       while ((str = strtok_r(p, ":", &p)) != '\0') {
         pid_args[i] = atoi(str);
         i++;
@@ -244,7 +255,7 @@ int runCommand() {
       Ki = pid_args[2];
       Ko = pid_args[3];
       Serial.println("OK");
-      break;
+      break;*/
 #endif
     default:
       Serial.println("Invalid Command");
@@ -293,6 +304,15 @@ void setup() {
       servoInitPosition[i]);
   }
 #endif
+#ifdef USE_MOTORS
+  int i;
+  for (i = 0; i < N_MOTORS; i++) {
+    motors[i].initMotor(
+      motorPins[i],
+      stepDelay[i],
+      servoInitPosition[i]);
+  }
+#endif
 }
 
 /* Enter the main loop.  Read and parse input from the serial port
@@ -324,6 +344,30 @@ void move_debug()
 }
 
 
+#define dureeMinimaleImpulsionCommandeESC     1000        // La durée minimale pour une impulsion est de 1000 µs, soit 1 ms (comme pour un servomoteur, en fait)
+#define dureeMaximaleImpulsionCommandeESC     2000   
+#define pinPilotageESC             9 
+
+Servo ESC; 
+int first = 0;
+
+void loop_temp2()
+{
+  if (first == 0)
+  {
+      ESC.attach(9,1000,2000);
+      first = 1;
+      
+  }
+  for (int i = 50; i  < 60; i++)
+  {
+    ESC.writeMicroseconds(i); 
+    delay(1);
+   }
+  
+   
+}
+
 
 void loop_temp() {
 
@@ -353,7 +397,6 @@ void loop() {
       chr = msg[i];
       Serial.println("la");
 
-
       // Terminate a command with a CR
       if (chr == '\r') {
 
@@ -363,8 +406,18 @@ void loop() {
         else if (arg == 2) {
           argv2[index] = NULL;
         }
+        
+        
         runCommand();
         resetCommand();
+        // Sweep servos
+        #ifdef USE_MOTORS
+      
+        for (int i = 0; i < N_SERVOS; i++) {
+          servos[i].doSweep();
+          motors[i].doSweep();
+        }
+        #endif
       }
       // Use spaces to delimit parts of the command
       else if (chr == ' ') {
@@ -393,6 +446,8 @@ void loop() {
         }
       }
     }
+
+      
   }
 
   // If we are using base control, run a PID calculation at the appropriate intervals
@@ -407,15 +462,6 @@ void loop() {
     ;
     setMotorSpeeds(0, 0);
     moving = 0;
-  }
-#endif
-
-  // Sweep servos
-#ifdef USE_SERVOS
-  int i;
-
-  for (i = 0; i < N_SERVOS; i++) {
-    servos[i].doSweep();
   }
 #endif
 }

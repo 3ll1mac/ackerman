@@ -1,19 +1,8 @@
-/***************************************************************
-   Servo Sweep - by Nathaniel Gallinger
-
-   Sweep servos one degree step at a time with a user defined
-   delay in between steps.  Supports changing direction 
-   mid-sweep.  Important for applications such as robotic arms
-   where the stock servo speed is too fast for the strength
-   of your system.
-
- *************************************************************/
-
-#ifdef USE_SERVOS
+#ifdef MOTORS_H
 
 
 // Constructor
-SweepServo::SweepServo()
+Motor::Motor()
 {
   this->currentPositionDegrees = 0;
   this->targetPositionDegrees = 0;
@@ -22,12 +11,12 @@ SweepServo::SweepServo()
 
 
 // Init
-void SweepServo::initServo(
-    int servoPin,
+void Motor::initMotor(
+    int motorPin,
     int stepDelayMs,
     int initPosition)
 {
-  this->servo.attach(servoPin);
+  this->motor.attach(motorPin);
   this->stepDelayMs = stepDelayMs;
   this->currentPositionDegrees = initPosition;
   this->targetPositionDegrees = initPosition;
@@ -36,10 +25,10 @@ void SweepServo::initServo(
 
 
 // Perform Sweep
-void SweepServo::doSweep()
+void Motor::doSweep()
 {
 
-  this->servo.write(this->targetPositionDegrees);
+  this->motor.writeMicroseconds(this->targetPositionDegrees);
   // Get ellapsed time
 /*  int delta = millis() - this->lastSweepCommand;
 
@@ -64,22 +53,22 @@ void SweepServo::doSweep()
 
 
 // Set a new target position
-void SweepServo::setTargetPosition(int position)
+void Motor::setTargetPosition(int position)
 {
   this->targetPositionDegrees = position;
 }
 
 
-void SweepServo::updateTargetPosition(int position)
+void Motor::modifyTargetPosition(int position)
 {
-    this->targetPositionDegrees += position;
+  this->targetPositionDegrees += position;
 }
 
 
 // Accessor for servo object
-Servo SweepServo::getServo()
+Servo Motor::getServo()
 {
-  return this->servo;
+  return this->motor;
 }
 
 

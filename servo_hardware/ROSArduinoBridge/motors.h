@@ -1,8 +1,8 @@
-#ifndef SERVOS_H
-#define SERVOS_H
+#ifndef MOTORS_H
+#define MOTORS_H
 
 
-#define N_SERVOS 2
+#define N_MOTORS 2
 
 // This delay in milliseconds determines the pause 
 // between each one degree step the servo travels.  Increasing 
@@ -10,36 +10,35 @@
 // Decreasing this number will make the servo sweep more quickly.
 // Zero is the default number and will make the servos spin at
 // full speed.  150 ms makes them spin very slowly.
-int stepDelay [N_SERVOS] = { 0, 0}; // ms
+int stepDelay [N_MOTORS] = { 0, 0}; // ms
 
 // Pins
-byte servoPins [N_SERVOS] = { 3, 4};
+byte servoPins [N_MOTORS] = { 9, 8};
 
 // Initial Position
-byte servoInitPosition [N_SERVOS] = { 90, 90}; // [0, 180] degrees
+byte servoInitPosition [N_MOTORS] = { 1500, 1500};
 
-
-class SweepServo
+class Motor
 {
   public:
-    SweepServo();
-    void initServo(
-        int servoPin,
+    Motor();
+    void initMotor(
+        int motorPin,
         int stepDelayMs,
         int initPosition);
     void doSweep();
     void setTargetPosition(int position);
     void updateTargetPosition(int position);
-    Servo getServo();
+    Servo getMotor();
 
   private:
-    Servo servo;
+    Servo motor;
     int stepDelayMs;
     int currentPositionDegrees;
     int targetPositionDegrees;
     long lastSweepCommand;
 };
 
-SweepServo servos [N_SERVOS];
+Motor motors [N_MOTORS];
 
 #endif
