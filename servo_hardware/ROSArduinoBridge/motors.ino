@@ -16,17 +16,11 @@ void Motor::initMotor(
     int stepDelayMs,
     int initPosition)
 {
-  this->motor.attach(motorPin, 1000, 2000);
+  this->motor.attach(motorPin);
   this->stepDelayMs = stepDelayMs;
   this->currentPositionDegrees = initPosition;
   this->targetPositionDegrees = initPosition;
   this->lastSweepCommand = millis();
-
-  /*this->motor.writeMicroseconds(2000); // initialise the esc signal to low level
-  delay(2000);                 // wait for 1 second
-  this->motor.writeMicroseconds(1000); // then set it to high level
-  delay(2000);                 // then wait again for 1 second
-  this->motor.writeMicroseconds(2000);*/
 }
 
 
@@ -35,8 +29,6 @@ void Motor::doSweep()
 {
 
   this->motor.writeMicroseconds(this->targetPositionDegrees);
-  delay(10);
-  Serial.print("DoSweep\n\r");
   // Get ellapsed time
 /*  int delta = millis() - this->lastSweepCommand;
 
@@ -67,29 +59,14 @@ void Motor::setTargetPosition(int position)
 }
 
 
-void Motor::updateTargetPosition(int position)
+void Motor::modifyTargetPosition(int position)
 {
-  /*if (this->targetPositionDegrees + position >= 1000 && this->targetPositionDegrees + position <= 2000)
-  {
-    this->targetPositionDegrees += position;
-  }*/
-  if (position < 0)
-  {
-    this->targetPositionDegrees = 1300;
-  }
-  else if (position > 0)
-  {
-     this->targetPositionDegrees = 1600;
-  }
-  else
-  {
-    this->targetPositionDegrees = 1500;
-  }
+  this->targetPositionDegrees += position;
 }
 
 
 // Accessor for servo object
-Servo Motor::getMotor()
+Servo Motor::getServo()
 {
   return this->motor;
 }
