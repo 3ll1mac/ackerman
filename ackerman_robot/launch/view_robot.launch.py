@@ -81,7 +81,7 @@ def generate_launch_description():
             package="teleop_twist_keyboard",
             executable="teleop_twist_keyboard",
             prefix="xterm -e",
-            parameters=[{'stamped': True}],
+            parameters=[{'stamped': True}, {' _key_timeout': 0.6}],
             remappings=[('cmd_vel','/ackermann_steering_controller/reference')]
     )
 

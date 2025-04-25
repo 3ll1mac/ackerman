@@ -288,17 +288,19 @@ hardware_interface::return_type ackerman_robot::DiffDriveArduinoHardware::write(
   }
 
   std::stringstream ss;
- /* ss << "front_wheel_l.cmd: " << front_wheel_l_.cmd <<  "front_wheel_l.pos: " << front_wheel_l_.pos <<
+  ss << "front_wheel_l.cmd: " << front_wheel_l_.cmd <<  "front_wheel_l.pos: " << front_wheel_l_.pos <<
    "\nrear_wheel_l_: " << rear_wheel_l_.cmd << "\r";
-  RCLCPP_INFO(rclcpp::get_logger("DiffDriveArduinoHardware"), "%s", ss.str().c_str());*/
+  RCLCPP_INFO(rclcpp::get_logger("DiffDriveArduinoHardware"), "%s", ss.str().c_str());
+
+  // rear_wheel_l_.cmd -- velocity -- double, in m/s
+  // front_wheel_l_.cmd -- position -- double, in rad
 
   int rear_wheel_l_counts_per_loop = rear_wheel_l_.cmd / rear_wheel_l_.rads_per_count / cfg_.loop_rate;
-  int servo_l_counts_per_loop = front_wheel_l_.cmd / front_wheel_l_.rads_per_count / cfg_.loop_rate;
   
   ss << "servo_l_count = " << rear_wheel_l_counts_per_loop << "\n";
   RCLCPP_INFO(rclcpp::get_logger("DiffDriveArduinoHardware"), "%s", ss.str().c_str());
 
-  comms_.up_servos_values(servo_l_counts_per_loop);
+  comms_.up_servos_values(front_wheel_l_.cmd); // will add or remove radian 
   comms_.set_brush_values(rear_wheel_l_counts_per_loop);
 
 
