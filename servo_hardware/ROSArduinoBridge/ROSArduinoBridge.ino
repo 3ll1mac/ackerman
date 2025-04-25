@@ -45,8 +45,8 @@
     POSSIBILITY OF SUCH DAMAGE.
  *********************************************************************/
 
-#define USE_BASE      // Enable the base controller code
-//#undef USE_BASE     // Disable the base controller code
+// #define USE_BASE      // Enable the base controller code
+// #undef USE_BASE     // Disable the base controller code
 
 /* Define the motor controller and encoder library you are using */
 #ifdef USE_BASE
@@ -60,20 +60,21 @@
 //#define ROBOGAIA
 
 /* Encoders directly attached to Arduino board */
-#define ARDUINO_ENC_COUNTER
+//#define ARDUINO_ENC_COUNTER
 
 /* L298 Motor driver*/
-#define L298_MOTOR_DRIVER
+//#define L298_MOTOR_DRIVER
 #endif
 
 #define USE_SERVOS  // Enable use of PWM servos as defined in servos.h
-//#define USE_SERVOS     // Disable use of PWM servos
-
+#define USE_MOTORS    // Disable use of PWM servos
+        
 /* Serial port baud rate */
 #define BAUDRATE     9600
+ 
 
 /* Maximum PWM signal */
-#define MAX_PWM        255
+//#define MAX_PWM        255
 
 #if defined(ARDUINO) && ARDUINO >= 100
 #include "Arduino.h"
@@ -85,23 +86,26 @@
 #include "commands.h"
 
 /* Sensor functions */
-#include "sensors.h"
+// #include "sensors.h"
 
 /* Include servo support if required */
 #ifdef USE_SERVOS
 #include <Servo.h>
 #include "servos.h"
+#include "motors.h"
 #endif
+
+Servo esc;
 
 #ifdef USE_BASE
 /* Motor driver function definitions */
-#include "motor_driver.h"
+// #include "motor_driver.h"
 
 /* Encoder driver function definitions */
-#include "encoder_driver.h"
+//  #include "encoder_driver.h"
 
 /* PID parameters and functions */
-#include "diff_controller.h"
+// #include "diff_controller.h"
 
 /* Run the PID loop at 30 times per second */
 #define PID_RATE           30     // Hz
@@ -160,39 +164,11 @@ int runCommand() {
 
 
   switch (cmd) {
-    case GET_BAUDRATE:
-      Serial.println(BAUDRATE);
-      break;
-    case ANALOG_READ:
-      Serial.println(analogRead(arg1));
-      break;
-    case DIGITAL_READ:
-      Serial.println(digitalRead(arg1));
-      break;
- /*   case ANALOG_WRITE:
-      analogWrite(arg1, arg2);
-      Serial.println("OK");
-      break;*/
-/*    case DIGITAL_WRITE:
-      if (arg2 == 0) digitalWrite(arg1, LOW);
-      else if (arg2 == 1) digitalWrite(arg1, HIGH);
-      Serial.println("OK");
-      break;*/
-    case PIN_MODE:
-      if (arg2 == 0) pinMode(arg1, INPUT);
-      else if (arg2 == 1) pinMode(arg1, OUTPUT);
-      Serial.println("OK");
-      break;
-    case PING:
-      Serial.println(Ping(arg1));
-      break;
 #ifdef USE_SERVOS
     case SERVO_WRITE:
 
       Serial.print("Servo command received: ");
       Serial.print(arg1);
-      Serial.print(" ");
-      Serial.println(arg2);
       servos[STEERING_RIGHT].setTargetPosition(arg1);
       servos[STEERING_LEFT].setTargetPosition(arg1);
       Serial.println("OK\n\r");
@@ -208,60 +184,13 @@ int runCommand() {
 #endif
 #ifdef USE_MOTORS
     case BRUSH_WRITE:
-      motors[STEERING_RIGHT].updateTargetPosition(arg1);
-      motors[STEERING_LEFT].updateTargetPosition(arg1);
+      motors[RIGHT].updateTargetPosition(arg1);
+      motors[LEFT].updateTargetPosition(arg1);
       break;
 #endif
-
-#ifdef USE_BASE
-    case READ_ENCODERS:
-      Serial.print(readEncoder(LEFT));
-      Serial.print(" ");
-      Serial.println(readEncoder(RIGHT));
-      break;
-    case RESET_ENCODERS:
-      resetEncoders();
-      resetPID();
-      Serial.println("OK");
-      break;
-    case MOTOR_SPEEDS:
-      /* Reset the auto stop timer */
-      lastMotorCommand = millis();
-      if (arg1 == 0 && arg2 == 0) {
-        setMotorSpeeds(0, 0);
-        resetPID();
-        moving = 0;
-      }
-      else moving = 1;
-      leftPID.TargetTicksPerFrame = arg1;
-      rightPID.TargetTicksPerFrame = arg2;
-      Serial.println("OK");
-      break;
-    case MOTOR_RAW_PWM:
-      /* Reset the auto stop timer */
-      lastMotorCommand = millis();
-      resetPID();
-      moving = 0; // Sneaky way to temporarily disable the PID
-      setMotorSpeeds(arg1, arg2);
-      Serial.println("OK");
-      break;
- /*   case UPDATE_PID:
-      while ((str = strtok_r(p, ":", &p)) != '\0') {
-        pid_args[i] = atoi(str);
-        i++;
-      }
-      Kp = pid_args[0];
-      Kd = pid_args[1];
-      Ki = pid_args[2];
-      Ko = pid_args[3];
-      Serial.println("OK");
-      break;*/
-#endif
-    default:
-      Serial.println("Invalid Command");
-      break;
   }
 }
+
 
 /* Setup function--runs once at startup. */
 void setup() {
@@ -304,13 +233,19 @@ void setup() {
       servoInitPosition[i]);
   }
 #endif
-#ifdef USE_MOTORS
-  int i;
+#ifdef USE_MOTORS 
+  //esc.attach(9,1000,2000);
+ /* esc.writeMicroseconds(1000); // initialise the esc signal to low level
+  delay(1000);                 // wait for 1 second
+  esc.writeMicroseconds(2000); // then set it to high level
+  delay(1000);                 // then wait again for 1 second
+      esc.writeMicroseconds(1000);*/
   for (i = 0; i < N_MOTORS; i++) {
     motors[i].initMotor(
       motorPins[i],
       stepDelay[i],
-      servoInitPosition[i]);
+      motorInitPosition[i]);
+    
   }
 #endif
 }
@@ -348,22 +283,24 @@ void move_debug()
 #define dureeMaximaleImpulsionCommandeESC     2000   
 #define pinPilotageESC             9 
 
-Servo ESC; 
-int first = 0;
 
-void loop_temp2()
+void loop_Temp2()
 {
-  if (first == 0)
+  Serial.println("in loop");
+  for (int i = 1300; i < 1600; i++)
   {
-      ESC.attach(9,1000,2000);
-      first = 1;
-      
+    #ifdef USE_MOTORS
+        motors[LEFT].setTargetPosition(i);
+        motors[RIGHT].setTargetPosition(i);
+
+
+        for (int j = 0; j < N_SERVOS; j++) {
+          Serial.println(i);
+          motors[j].doSweep();
+        }
+        #endif
   }
-  for (int i = 50; i  < 60; i++)
-  {
-    ESC.writeMicroseconds(i); 
-    delay(1);
-   }
+
   
    
 }
@@ -445,23 +382,6 @@ void loop() {
           index++;
         }
       }
-    }
-
-      
+    }   
   }
-
-  // If we are using base control, run a PID calculation at the appropriate intervals
-#ifdef USE_BASE
-  if (millis() > nextPID) {
-    updatePID();
-    nextPID += PID_INTERVAL;
-  }
-
-  // Check to see if  we have exceeded the auto-stop interval
-  if ((millis() - lastMotorCommand) > AUTO_STOP_INTERVAL) {
-    ;
-    setMotorSpeeds(0, 0);
-    moving = 0;
-  }
-#endif
 }
