@@ -69,11 +69,11 @@ def generate_launch_description():
     robot_controller_spawner = Node(
         package='controller_manager',
         executable='spawner',
-        arguments=['ackermann_steering_controller',
+        arguments=['bicycle_steering_controller',
                    '--param-file',
                    robot_controllers,
                    '--controller-ros-args',
-                   '-r /ackermann_steering_controller/tf_odometry:=/tf',
+                   '-r /bicycle_steering_controller/tf_odometry:=/tf',
                    ],
     )
 
@@ -81,8 +81,8 @@ def generate_launch_description():
             package="teleop_twist_keyboard",
             executable="teleop_twist_keyboard",
             prefix="xterm -e",
-            parameters=[{'stamped': True}, {' _key_timeout': 0.6}],
-            remappings=[('cmd_vel','/ackermann_steering_controller/reference')]
+            parameters=[{'stamped': True}],
+            remappings=[('cmd_vel','/bicycle_steering_controller/reference')]
     )
 
     # Delay rviz start after `joint_state_broadcaster`

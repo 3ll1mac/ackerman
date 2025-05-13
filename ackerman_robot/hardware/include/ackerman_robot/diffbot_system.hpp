@@ -34,8 +34,33 @@
 #include "ackerman_robot/arduino_comms.hpp"
 #include "ackerman_robot/wheel.hpp"
 
+
+
 namespace ackerman_robot
 {
+
+struct JointValue
+{
+  double position{0.0};
+  double velocity{0.0};
+  double effort{0.0};
+};
+
+struct Joint
+{
+  explicit Joint(const std::string & name) : joint_name(name)
+  {
+    state = JointValue();
+    command = JointValue();
+  }
+
+  Joint() = default;
+
+  std::string joint_name;
+  JointValue state;
+  JointValue command;
+};
+
 class DiffDriveArduinoHardware : public hardware_interface::SystemInterface
 {
 
@@ -97,6 +122,16 @@ public:
 
 private:
 
+  double hw_start_sec_;
+  double hw_stop_sec_;
+
+  // Objects for logging
+  std::shared_ptr<rclcpp::Logger> logger_;
+  rclcpp::Clock::SharedPtr clock_;
+
+  // std::vector<std::tuple<std::string, double, double>>
+  //   hw_interfaces_;  // name of joint, state, command
+  std::map<std::string, Joint> hw_interfaces_;
   ArduinoComms comms_;
   Config cfg_;
   Wheel front_wheel_l_;

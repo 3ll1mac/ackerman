@@ -6,7 +6,7 @@
 // #include <cstdlib>
 #include <libserial/SerialPort.h>
 #include <iostream>
-
+#include <unistd.h>
 
 LibSerial::BaudRate convert_baud_rate(int baud_rate)
 {
@@ -54,27 +54,30 @@ public:
   }
 
 
-  std::string send_msg(const std::string &msg_to_send, bool print_output = false)
+  std::string send_msg(const std::string &msg_to_send, bool print_output = true)
   {
     serial_conn_.FlushIOBuffers(); // Just in case
     serial_conn_.Write(msg_to_send);
-   // RCLCPP_INFO(rclcpp::get_logger("DiffDriveArduinoHardware"), "MESSAGE SENT: %s",msg_to_send.c_str());
+  //  RCLCPP_INFO(rclcpp::get_logger("DiffDriveArduinoHardware"), "MESSAGE SENT: %s",msg_to_send.c_str());
+   // unsigned int microsecond = 1000000;
+   // usleep(microsecond);
 
 
     std::string response = "";
     try
     {
       // Responses end with \r\n so we will read up to (and including) the \n.
-      serial_conn_.ReadLine(response, '\n', timeout_ms_);
+      serial_conn_.ReadLine(response, '\n', 4*timeout_ms_);
     }
     catch (const LibSerial::ReadTimeout&)
     {
-        std::cerr << "The ReadByte() call has timed out." << std::endl ;
+        std::cerr << "The ReadByte() call has timed out: "<< msg_to_send.c_str() <<"\n" << std::endl ;
     }
 
     if (print_output)
     {
-      std::cout << "Sent: " << msg_to_send << " Recv: " << response << std::endl;
+      std::cout << "Sent: " << msg_to_send << std::endl;
+      std::cout <<  " Recv: " << response << std::endl;
     }
 
     return response;
