@@ -6,6 +6,8 @@ from launch.substitutions import Command, FindExecutable, PathJoinSubstitution
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
 
+# controller = "bicycle_steering_controller"
+controller = "ackermann_steering_controller"
 
 def generate_launch_description():
     package_name = "ackerman_robot"
@@ -25,7 +27,7 @@ def generate_launch_description():
         [
             FindPackageShare(package_name),
             "config",
-            "carlikebot_controllers.yaml",
+            "ackermann_controller.yaml",
         ]
     )
     rviz_config_file = PathJoinSubstitution(
@@ -44,7 +46,7 @@ def generate_launch_description():
         output="both",
         parameters=[robot_description],
         remappings=[
-            ("/ackermann_steering_controller/reference", "/cmd_vel"),
+            ("/"+controller+"/reference", "/cmd_vel"),
         ],
     )
     rviz_node = Node(
@@ -69,11 +71,11 @@ def generate_launch_description():
     robot_controller_spawner = Node(
         package='controller_manager',
         executable='spawner',
-        arguments=['bicycle_steering_controller',
+        arguments=[controller,
                    '--param-file',
                    robot_controllers,
                    '--controller-ros-args',
-                   '-r /bicycle_steering_controller/tf_odometry:=/tf',
+                   '-r /'+controller+'/tf_odometry:=/tf',
                    ],
     )
 
@@ -82,7 +84,7 @@ def generate_launch_description():
             executable="teleop_twist_keyboard",
             prefix="xterm -e",
             parameters=[{'stamped': True}],
-            remappings=[('cmd_vel','/bicycle_steering_controller/reference')]
+            remappings=[('cmd_vel','/'+controller+'/reference')]
     )
 
     # Delay rviz start after `joint_state_broadcaster`

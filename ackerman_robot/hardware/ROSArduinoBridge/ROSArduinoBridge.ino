@@ -23,7 +23,7 @@
 #define USE_MOTORS    // Disable use of PWM servos
         
 /* Serial port baud rate */
-#define BAUDRATE     9600
+#define BAUDRATE     115200
  
 
 /* Maximum PWM signal */
@@ -77,58 +77,34 @@ long lastMotorCommand = AUTO_STOP_INTERVAL;
 
 /* Variable initialization */
 
-// A pair of varibles to help parse serial commands (thanks Fergs)
-int arg = 0;
-int index = 0;
+char cmd; // Variable to hold the current single-character command
+char argv1[16]; // Character arrays to hold the first and second arguments
+long arg1; // The arguments converted to integers
 
-// Variable to hold an input character
-char chr;
-
-// Variable to hold the current single-character command
-char cmd;
-
-// Character arrays to hold the first and second arguments
-char argv1[16];
-char argv2[16];
-
-// The arguments converted to integers
-long arg1;
-long arg2;
 
 /* Clear the current command parameters */
 void resetCommand() {
-  cmd = NULL;
-  Serial.println("RESETCOMMAND\r\n");
+  cmd = '\0';
   memset(argv1, 0, sizeof(argv1));
-  memset(argv2, 0, sizeof(argv2));
   arg1 = 0;
-  arg2 = 0;
-  arg = 0;
-  index = 0;
 }
 
 /* Run a command.  Commands are defined in commands.h */
-int runCommand() {
+int runCommand(char *argv) {
   int i = 0;
-  char *p = argv1;
-  char *str;
   int pid_args[4];
-  arg1 = atoi(argv1);
-  arg2 = atoi(argv2);
-  Serial.println("la\r\n");
+  arg1 = atoi(argv);
 
   switch (cmd) {
 #ifdef USE_SERVOS
     case SERVO_WRITE:
-
-      Serial.print("Servo command received: ");
-      Serial.print(arg1);
       servos[STEERING_RIGHT].setTargetPosition(arg1);
       servos[STEERING_LEFT].setTargetPosition(arg1);
-      Serial.println("OK\n\r");
       break;
     case SERVO_UPDATE:
-      Serial.println("SERVO UPDATE\r\n");
+      Serial.println("SERVO UPDATE");
+      Serial.println(arg1);
+      Serial.println(arg1);
       servos[STEERING_RIGHT].updateTargetPosition(arg1);
       servos[STEERING_LEFT].updateTargetPosition(arg1);
       break;
@@ -139,7 +115,9 @@ int runCommand() {
 #endif
 #ifdef USE_MOTORS
     case BRUSH_WRITE:
-      Serial.println("BRUSH WRITE\r\n");
+      Serial.println("BRUSH WRITE");
+      Serial.println(arg1);
+      Serial.println(arg1);
       motors[RIGHT].updateTargetPosition(arg1);
       motors[LEFT].updateTargetPosition(arg1);
       break;
@@ -158,7 +136,7 @@ void setup() {
   for (i = 0; i < N_SERVOS; i++) {
     servos[i].initServo(
       servoPins[i],
-      stepDelay[i],
+      100,
       servoInitPosition[i]);
   }
 #endif
@@ -252,56 +230,78 @@ void loop_temp() {
 /* END DEBUG */
 
 
+
+bool newData = false;
+
 void loop() {
-  while (Serial.available() > 0) {
-    // Read the next character
-    String msg  = Serial.readString();
-    Serial.println("IN LOOP\r\n");
-    msg.trim();
-    for (int i = 0; msg[i]; i++)
-    {
-      chr = msg[i];
-      Serial.println("la\r\n");
-
-      // Terminate a command with a CR
-      if (chr == '\r') {
-
-        if (arg == 1) {
-          argv1[index] = NULL;
-        }        
-        
-        runCommand();
-        resetCommand();
-        // Sweep servos
-        #ifdef USE_MOTORS
-      
-        for (int i = 0; i < N_SERVOS; i++) {
-          servos[i].doSweep();
-          motors[i].doSweep();
-        }
-        #endif
-      }
-      // Use spaces to delimit parts of the command
-      else if (chr == ' ') {
-        // Step through the arguments
-        if (arg == 0) arg = 1;
-        else if (arg == 1)  {
-          argv1[index] = NULL;
+    static boolean recvInProgress = false;
+    char startMarker = '<';
+    char endMarker = '>';
+    char rc;
+    int index = 0;
+    int arg = 0;
+    char argv[50];
+    
+    String m = String();
+    while (Serial.available() > 0) {
+        rc = Serial.read();
+        Serial.println("rc: ");
+        Serial.println(rc);
+ 
+        if (recvInProgress == true) {
+          if (rc == ' ') {
+            if (arg == 0) 
+            {
+              Serial.println("Space");
+              arg = 1;
+            }
+               
+          }
+          else if (rc == endMarker) {
+             if (arg == 1) {
+                argv[index] = '\0';
+                recvInProgress = false;
+                arg = 0;
+                Serial.println(argv);
+                Serial.println(cmd);
+                
+                execute(argv);
+                Serial.println("DONE\r\n");
+              }
+          }
+          else {
+            
+             if (arg == 0) {
+                Serial.println("command" + cmd);
+                cmd = rc;
+              }
+              else {
+                Serial.println("else " + rc);
+                argv[index] = rc;                
+                index++;
+              }
+          }   
+      }else if (rc == startMarker) {
+          recvInProgress = true;
           index = 0;
-        }
-        continue;
+          arg = 0;
       }
-      else {
-        if (arg == 0) {
-          // The first arg is the single-letter command
-          cmd = chr;
-        }
-        else if (arg == 1) {
-          // Subsequent arguments can be more than one character
-          argv1[index] = chr;
-          index++;
-        }
-      }
-    }
   }
 }
+
+
+
+void execute(char *argv) {   
+      runCommand(argv);
+      resetCommand();
+
+      #ifdef USE_MOTORS
+      for (int i = 0; i < N_SERVOS; i++) {
+        servos[i].doSweep();
+        motors[i].doSweep();
+      }
+      #endif
+        
+}
+ 
+  

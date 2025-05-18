@@ -18,8 +18,8 @@ void Motor::initMotor(
 {
   this->motor.attach(motorPin, 1000, 2000);
   this->stepDelayMs = stepDelayMs;
-  this->currentPositionDegrees = initPosition;
-  this->targetPositionDegrees = initPosition;
+  this->currentPositionDegrees = 1500;
+  this->targetPositionDegrees = 1500;
   this->lastSweepCommand = millis();
 
   /*this->motor.writeMicroseconds(2000); // initialise the esc signal to low level
@@ -33,67 +33,69 @@ void Motor::initMotor(
 // Perform Sweep
 void Motor::doSweep()
 {
-  Serial.print("DoSweep\r\n");
-  this->motor.writeMicroseconds(this->targetPositionDegrees);
-  delay(10);
-  Serial.print("DoSweep\r\n");
-  // Get ellapsed time
-/*  int delta = millis() - this->lastSweepCommand;
-
-  // Check if time for a step
-  if (delta > this->stepDelayMs) {
-    // Check step direction
-    if (this->targetPositionDegrees > this->currentPositionDegrees) {
-      this->currentPositionDegrees++;
-      this->servo.write(this->currentPositionDegrees);
+  Serial.println("DoSweep");
+  Serial.println(this->currentPositionDegrees);
+  Serial.println(this->targetPositionDegrees);
+  
+  if (this->currentPositionDegrees < this->targetPositionDegrees)
+  {
+    for (; this->currentPositionDegrees < this->targetPositionDegrees; this->currentPositionDegrees+=2)
+    {
+        Serial.println(this->currentPositionDegrees);
+       this->motor.writeMicroseconds(this->currentPositionDegrees);  
+       delay(3);
     }
-    else if (this->targetPositionDegrees < this->currentPositionDegrees) {
-      this->currentPositionDegrees--;
-      
-      this->servo.write(this->currentPositionDegrees);
+  }else
+  {
+    for (; this->currentPositionDegrees > this->targetPositionDegrees; this->currentPositionDegrees-=2)
+    {
+       Serial.println(this->currentPositionDegrees);
+       this->motor.writeMicroseconds(this->currentPositionDegrees);  
+       delay(3);
     }
-    // if target == current position, do nothing
-
-    // reset timerthis->servo.write(this->currentPositionDegrees);
-    this->lastSweepCommand = millis();
-  }*/
+  }
 }
 
 
 // Set a new target position
 void Motor::setTargetPosition(int position)
 {
-  Serial.print("Set\r\n");
+  //Serial.print("Set\r\n");
   this->targetPositionDegrees = position;
 }
 
 
 void Motor::updateTargetPosition(int position)
 {
-  /*if (this->targetPositionDegrees + position >= 1000 && this->targetPositionDegrees + position <= 2000)
+  /* Keep between 1000 and 2000 */
+  if (position < -500)
+    position = -500;
+  if (position > 500)
+    position = 500;
+  this->targetPositionDegrees = 1500 + position;
+  
+  /*if (position < 0)
   {
-    this->targetPositionDegrees += position;
-  }*/
-  Serial.print("Up\r\n");
-  if (position < 0)
-  {
-    this->targetPositionDegrees = 1300;
+    Serial.println("MINUS");
+    this->targetPositionDegrees = 1200;
   }
   else if (position > 0)
-  {
-     this->targetPositionDegrees = 1600;
+  {   
+    Serial.println("PLUS");
+     this->targetPositionDegrees = 1700;
   }
   else
   {
+    Serial.println("NEUTRE");
     this->targetPositionDegrees = 1500;
-  }
+  }*/
 }
 
 
 // Accessor for servo object
 Servo Motor::getMotor()
 {
-  Serial.println("la\r\n");
+  //Serial.println("la\r\n");
   return this->motor;
 }
 

@@ -56,31 +56,40 @@ public:
 
   std::string send_msg(const std::string &msg_to_send, bool print_output = true)
   {
-    serial_conn_.FlushIOBuffers(); // Just in case
-    serial_conn_.Write(msg_to_send);
-  //  RCLCPP_INFO(rclcpp::get_logger("DiffDriveArduinoHardware"), "MESSAGE SENT: %s",msg_to_send.c_str());
+    
+    std::stringstream ss;  
    // unsigned int microsecond = 1000000;
    // usleep(microsecond);
 
-
-    std::string response = "";
-    try
+    /*if (!speaking)
     {
-      // Responses end with \r\n so we will read up to (and including) the \n.
-      serial_conn_.ReadLine(response, '\n', 4*timeout_ms_);
-    }
-    catch (const LibSerial::ReadTimeout&)
-    {
-        std::cerr << "The ReadByte() call has timed out: "<< msg_to_send.c_str() <<"\n" << std::endl ;
-    }
+      speaking = true;*/
 
-    if (print_output)
-    {
-      std::cout << "Sent: " << msg_to_send << std::endl;
-      std::cout <<  " Recv: " << response << std::endl;
-    }
+      serial_conn_.FlushIOBuffers(); // Just in case
+      serial_conn_.Write(msg_to_send);
+      RCLCPP_INFO(rclcpp::get_logger("DiffDriveArduinoHardware"), "MESSAGE SENT: %s",msg_to_send.c_str());
+      std::string response = "";
+      try
+      {
+        // Responses end with \r\n so we will read up to (and including) the \n.
+        serial_conn_.ReadLine(response, '\n', timeout_ms_);
+      }
+      catch (const LibSerial::ReadTimeout&)
+      {
+          std::cerr << "The ReadByte() call has timed out: "<< msg_to_send.c_str() <<"\n" << std::endl ;
+      }
+  
+      if (print_output)
+      {
+        std::cout << "Sent: " << msg_to_send << std::endl;
+        std::cout <<  " Recv: " << response << std::endl;
+      }
+      speaking =false;
+  
+      return response;
 
-    return response;
+    /*}*/
+   
   }
 
 
@@ -104,7 +113,7 @@ public:
   void set_motor_values(int val_1, int val_2)
   {
     std::stringstream ss;
-    ss << "m " << val_1 << " " << val_2 << "\r";
+    ss << "<m " << val_1 << " " << val_2 << ">\r";
     send_msg(ss.str());
   }
 
@@ -112,14 +121,14 @@ public:
   {
     
     std::stringstream ss;
-    ss << "s " << val_1 << "\r";
+    ss << "<s " << val_1 << ">\r";
     send_msg(ss.str());
   }
 
   void up_servos_values(int val_1)
   {
     std::stringstream ss;
-    ss << "u " << val_1 << "\r";
+    ss << "<u " << val_1 << ">\r";
     send_msg(ss.str());
   }
 
@@ -127,7 +136,7 @@ public:
   {
     
     std::stringstream ss;
-    ss << "b " << val_1 << "\r";
+    ss << "<b " << val_1 << ">\r";
     send_msg(ss.str());
   }
 
@@ -141,6 +150,7 @@ public:
 private:
     LibSerial::SerialPort serial_conn_;
     int timeout_ms_;
+    int speaking = false;
 };
 
 #endif // DIFFDRIVE_ARDUINO_ARDUINO_COMMS_HPP

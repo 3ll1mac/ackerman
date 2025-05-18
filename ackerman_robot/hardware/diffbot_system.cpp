@@ -54,10 +54,10 @@ hardware_interface::CallbackReturn DiffDriveArduinoHardware::on_init(
     RCLCPP_INFO(rclcpp::get_logger("DiffDriveArduinoHardware"), "PID values not supplied, using defaults.");
   }
 
-  /*cfg_.front_left_wheel_name = info_.hardware_parameters["front_left_wheel_name"];
-  //cfg_.front_right_wheel_name = info_.hardware_parameters["front_right_wheel_name"];
+  cfg_.front_left_wheel_name = info_.hardware_parameters["front_left_wheel_name"];
+  cfg_.front_right_wheel_name = info_.hardware_parameters["front_right_wheel_name"];
   cfg_.rear_left_wheel_name= info_.hardware_parameters["rear_left_wheel_name"];
-  //cfg_.rear_right_wheel_name = info_.hardware_parameters["rear_right_wheel_name"];
+  cfg_.rear_right_wheel_name = info_.hardware_parameters["rear_right_wheel_name"];
  
   
 
@@ -66,9 +66,9 @@ hardware_interface::CallbackReturn DiffDriveArduinoHardware::on_init(
   rear_wheel_l_.setup(cfg_.rear_left_wheel_name, cfg_.enc_counts_per_rev);
   rear_wheel_r_.setup(cfg_.rear_right_wheel_name, cfg_.enc_counts_per_rev);
 
-*/
 
-  /*for (const hardware_interface::ComponentInfo & joint : info_.joints)
+
+  for (const hardware_interface::ComponentInfo & joint : info_.joints)
   {
     bool joint_is_steering = joint.name.find("steering") != std::string::npos;
 
@@ -154,7 +154,8 @@ hardware_interface::CallbackReturn DiffDriveArduinoHardware::on_init(
         return hardware_interface::CallbackReturn::ERROR;
       }
     }    
-  }*/
+  }
+ /* Bicyle
   // code
   hw_start_sec_ = std::stod(info_.hardware_parameters["example_param_hw_start_duration_sec"]);
   hw_stop_sec_ = std::stod(info_.hardware_parameters["example_param_hw_stop_duration_sec"]);
@@ -164,13 +165,15 @@ hardware_interface::CallbackReturn DiffDriveArduinoHardware::on_init(
 
   hw_interfaces_["traction"] = Joint("rear_left_wheel_joint");
 
+ */
+ 
   return hardware_interface::CallbackReturn::SUCCESS;
 }
 
 std::vector<hardware_interface::StateInterface> DiffDriveArduinoHardware::export_state_interfaces()
 {
   
-  std::vector<hardware_interface::StateInterface> state_interfaces;
+  /*std::vector<hardware_interface::StateInterface> state_interfaces;
 
   for (auto & joint : hw_interfaces_)
   {
@@ -193,9 +196,9 @@ std::vector<hardware_interface::StateInterface> DiffDriveArduinoHardware::export
     RCLCPP_INFO(get_logger(), "Exported state interface '%s'.", s.get_name().c_str());
   }
 
-  return state_interfaces;
+  return state_interfaces;*/
 
-  /*
+  
   std::vector<hardware_interface::StateInterface> state_interfaces;
 
   state_interfaces.emplace_back(hardware_interface::StateInterface(
@@ -216,12 +219,12 @@ std::vector<hardware_interface::StateInterface> DiffDriveArduinoHardware::export
     rear_wheel_r_.name, hardware_interface::HW_IF_VELOCITY, &rear_wheel_r_.vel));
   
 
-  return state_interfaces;*/
+  return state_interfaces;
 }
 
 std::vector<hardware_interface::CommandInterface> DiffDriveArduinoHardware::export_command_interfaces()
 {
-  std::vector<hardware_interface::CommandInterface> command_interfaces;
+  /*std::vector<hardware_interface::CommandInterface> command_interfaces;
 
   for (auto & joint : hw_interfaces_)
   {
@@ -248,9 +251,9 @@ std::vector<hardware_interface::CommandInterface> DiffDriveArduinoHardware::expo
       get_logger(), "Exported command interface '%s'.", command_interfaces[i].get_name().c_str());
   }
 
-  return command_interfaces;
+  return command_interfaces;*/
 
-  /*std::vector<hardware_interface::CommandInterface> command_interfaces;
+  std::vector<hardware_interface::CommandInterface> command_interfaces;
 
   command_interfaces.emplace_back(hardware_interface::CommandInterface(
     front_wheel_l_.name, hardware_interface::HW_IF_POSITION, &front_wheel_l_.cmd));
@@ -265,7 +268,7 @@ std::vector<hardware_interface::CommandInterface> DiffDriveArduinoHardware::expo
   command_interfaces.emplace_back(hardware_interface::CommandInterface(
     rear_wheel_r_.name, hardware_interface::HW_IF_VELOCITY, &rear_wheel_r_.cmd));
 
-  return command_interfaces;*/
+  return command_interfaces;
 }
 
 hardware_interface::CallbackReturn DiffDriveArduinoHardware::on_configure(
@@ -299,7 +302,7 @@ hardware_interface::CallbackReturn DiffDriveArduinoHardware::on_cleanup(
 hardware_interface::CallbackReturn DiffDriveArduinoHardware::on_activate(
   const rclcpp_lifecycle::State & /*previous_state*/)
 {
-  /*RCLCPP_INFO(rclcpp::get_logger("DiffDriveArduinoHardware"), "Activating ...please wait...");
+  RCLCPP_INFO(rclcpp::get_logger("DiffDriveArduinoHardware"), "Activating ...please wait...");
   if (!comms_.connected())
   {
     return hardware_interface::CallbackReturn::ERROR;
@@ -310,7 +313,8 @@ hardware_interface::CallbackReturn DiffDriveArduinoHardware::on_activate(
   }
   RCLCPP_INFO(rclcpp::get_logger("DiffDriveArduinoHardware"), "Successfully activated!");
 
-  return hardware_interface::CallbackReturn::SUCCESS;*/
+  return hardware_interface::CallbackReturn::SUCCESS;
+  /*
   RCLCPP_INFO(get_logger(), "Activating ...please wait...");
 
   for (auto i = 0; i < hw_start_sec_; i++)
@@ -337,7 +341,7 @@ hardware_interface::CallbackReturn DiffDriveArduinoHardware::on_activate(
 
   RCLCPP_INFO(get_logger(), "Successfully activated!");
 
-  return hardware_interface::CallbackReturn::SUCCESS;
+  return hardware_interface::CallbackReturn::SUCCESS;*/
 }
 
 hardware_interface::CallbackReturn DiffDriveArduinoHardware::on_deactivate(
@@ -372,55 +376,57 @@ hardware_interface::return_type DiffDriveArduinoHardware::read(
   return hardware_interface::return_type::OK;
 }
 
+int count = 0;
+
 hardware_interface::return_type ackerman_robot::DiffDriveArduinoHardware::write(
   const rclcpp::Time & /*time*/, const rclcpp::Duration & /*period*/)
 {
 
-   // BEGIN: This part here is for exemplary purposes - Please do not copy to your production code
-   std::stringstream ss;
-   ss << "Writing commands:";
- 
-   ss << std::fixed << std::setprecision(2) << std::endl
-      << "\t"
-      << "position: " << hw_interfaces_["steering"].command.position << " for joint '"
-      << hw_interfaces_["steering"].joint_name.c_str() << "'" << std::endl
-      << "\t"
-      << "velocity: " << hw_interfaces_["traction"].command.velocity << " for joint '"
-      << hw_interfaces_["traction"].joint_name.c_str() << "'";
- 
-   RCLCPP_INFO_THROTTLE(get_logger(), *get_clock(), 500, "%s", ss.str().c_str());
-   // END: This part here is for exemplary purposes - Please do not copy to your production code
- 
-   return hardware_interface::return_type::OK;
- /* if (!comms_.connected())
-  {
-    return hardware_interface::return_type::ERROR;
-  }
-
-  std::stringstream ss;
-  ss << "front_wheel_l.cmd: " << front_wheel_l_.cmd <<  "front_wheel_l.pos: " << front_wheel_l_.pos <<
-   "\nrear_wheel_l_: " << rear_wheel_l_.cmd << "\r";
-  //RCLCPP_INFO(rclcpp::get_logger("DiffDriveArduinoHardware"), "%s", ss.str().c_str());
-
+  
   // rear_wheel_l_.cmd -- velocity -- double, in m/s
   // front_wheel_l_.cmd -- position -- double, in rad
 
-  int rear_wheel_l_counts_per_loop = rear_wheel_l_.cmd / rear_wheel_l_.rads_per_count / cfg_.loop_rate;
+  if (!comms_.connected())
+  {
+    return hardware_interface::return_type::ERROR;
+  }
   
-  ss << "servo_l_count = " << rear_wheel_l_counts_per_loop << "\n";
+  std::stringstream ss;
+  std::stringstream ss2;
+  ss2 << "count : " << count << " \n";
+  //RCLCPP_INFO(rclcpp::get_logger("DiffDriveArduinoHardware"), "%s", ss2.str().c_str());
+
+  if (count == 0)
+  {
+
+    int rear_wheel_l_counts_per_loop = rear_wheel_l_.cmd / rear_wheel_l_.rads_per_count / cfg_.loop_rate;
+    if ( front_wheel_l_.cmd  > 1.50 || front_wheel_l_.cmd < -1.5)
+    {
+      ss << "front_wheel_l.cmd: " << front_wheel_l_.cmd <<  "front_wheel_l.pos: " << front_wheel_l_.pos <<
+      "\nrear_wheel_l_: " << rear_wheel_l_.cmd << "\r";
+      //RCLCPP_INFO(rclcpp::get_logger("DiffDriveArduinoHardware"), "%s", ss.str().c_str());
+      comms_.up_servos_values(front_wheel_l_.cmd);
+    }
+    else if (rear_wheel_l_.cmd  != 0)
+    {
+      ss << "front_wheel_l.cmd: " << front_wheel_l_.cmd <<  "front_wheel_l.pos: " << front_wheel_l_.pos <<
+      "\nrear_wheel_l_: " << rear_wheel_l_.cmd << "\r";
+     // RCLCPP_INFO(rclcpp::get_logger("DiffDriveArduinoHardware"), "%s", ss.str().c_str());
+      comms_.up_servos_values(front_wheel_l_.cmd);
+    }
+    comms_.set_brush_values(rear_wheel_l_counts_per_loop);
+  }
+
+  count = (count + 1) % 5;
+  
+  
+
+  
+  
+  //ss << "servo_l_count = " << rear_wheel_l_counts_per_loop << "\n";
   //RCLCPP_INFO(rclcpp::get_logger("DiffDriveArduinoHardware"), "%s", ss.str().c_str());
 
-  comms_.up_servos_values(front_wheel_l_.cmd); // will add or remove radian 
- // comms_.set_brush_values(rear_wheel_l_counts_per_loop);
-*/
-
-  /*
-  else if (rear_wheel_l_.cmd > 0)
-  {
-    rear_wheel_l_.angle += 1;
-    comms_.set_brush_values(rear_wheel_l_.angle);
-  }*/
-
+ 
   return hardware_interface::return_type::OK;
 }
 
