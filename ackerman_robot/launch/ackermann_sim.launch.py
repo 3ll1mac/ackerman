@@ -25,11 +25,16 @@ def generate_launch_description():
                 PathJoinSubstitution([
                     FindPackageShare('ackerman_robot'),
                     performed_description_format,
-                    f'test_ackermann_drive.xacro.{performed_description_format}'
+                    f'ackermann.urdf.xacro'
                 ]),
             ]
         )
-        robot_description = {'robot_description': robot_description_content}
+
+        pkg_path =  os.path.join(get_package_share_directory('ackerman_robot'))
+        xacro_file = os.path.join(pkg_path, 'urdf', 'ackermann.urdf.xacro')
+
+        robot_description_config = Command(['xacro ', xacro_file, ' sim_mode:=', use_sim_time])
+        robot_description = {'robot_description': robot_description_config}
         node_robot_state_publisher = Node(
             package='robot_state_publisher',
             executable='robot_state_publisher',
@@ -42,7 +47,7 @@ def generate_launch_description():
         [
             FindPackageShare('ackerman_robot'),
             'config',
-            'ackermann_drive_controller.yaml',
+            'ackermann_controller.yaml',
         ]
     )
 

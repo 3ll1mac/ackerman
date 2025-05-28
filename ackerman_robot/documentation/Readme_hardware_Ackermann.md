@@ -15,41 +15,6 @@ $ ros2 launch ackermann_robot ackermann_hardware.launch.py
 
 A <code>teleop_twist_keyboard</code> should open where you can type letter and see your motors move.
 
-## 2 - Launch file
-
-The hardware launch file is pretty similar the simulation one. 
-
-
-From the <code>simulation</code> we have added <code>rvizz</code> and this part:
-
-```
-joint_state_broadcaster_spawner = Node(
-    package="controller_manager",
-    executable="spawner",
-    arguments=["joint_state_broadcaster", "--controller-manager", "/controller_manager"],
-)
-
-
-robot_controller_spawner = Node(
-    package='controller_manager',
-    executable='spawner',
-    arguments=[controller,
-                '--param-file',
-                robot_controllers,
-                '--controller-ros-args',
-                '-r /'+controller+'/tf_odometry:=/tf',
-                ],
-)
-```
-
-The first node: <code> joint_state_broadcaster_spawner</code>:
-
-TODO
-
-The second  node: <code>robot_controller_spawner</code>:
-
-TODO
-
 
 ## 3 - Hardware interface
 
@@ -59,7 +24,7 @@ We will be using the following schema from, <strong>articulatedRobot</strong> to
 
 <img src="images/images.jpeg" alt="drawing" width="600"/>
 
-For the <strong>Command Velocity</strong> we are using <code>teleop_twist_keyboard</code>. Each time we click on a key, it will send a <code>Twist</code> message to the <code>cmd_vel</code> topic.
+For the <strong>Command Velocity</strong> topic we are using <code>teleop_twist_keyboard</code>. Each time we click on a key, it will send a <code>Twist</code> message to the <code>cmd_vel</code> topic (which is remapped to the `ackermann_steering_controller/reference`).
 
 For the <strong>Diff Drive Controller</strong> we are using a </strong>Ackerman_steering_controller</strong> because we have an ackermann robot and not a differential robot. 
 This controller will retrive the <code>Twist</code> message, calculate velocities and positions for each wheel and "send" it to our hardware interface.
@@ -102,7 +67,7 @@ This part was added to the urdf file. First we put the plugin,`ackerman_ronbot/D
 `diffbot_system.cpp` is the file containing the code of the hardware interface. You can find [here](https://control.ros.org/rolling/doc/ros2_control/hardware_interface/doc/writing_new_hardware_component.html) the requirements for creating an hardware interface.  
 
 
-`on_init`: The first function called. Checked that the joints declared in the `ros_control` component contains the right `command_interface` and `state_interface`. 
+`on_init`: The first function called. Checked that the joints declared in the `ros_control` component contains the right `command_interfaces` and `state_interfaces`. 
 
 `export_state_interfaces`: returns a list of `StateInterface` allowing the plugin to link the wheel in order to calculate the velocity and position.
 
@@ -111,9 +76,8 @@ This part was added to the urdf file. First we put the plugin,`ackerman_ronbot/D
 `write`: This method will read the updated velocities and position from the component we have given the plugin in the export methods. It is called approximately 9 times per second by the TODO.
 From there we have multiple options:
 - First we only take 1 message on 5. Otherwise the Arduino can't handle that much command and a queue will beginning to form, delaying the response time.
-- We send servos message only if the rear wheels are moving. Otherwise if you click once on the left, it will continue to send you messages to turn. We have taken into account the `j` and `l` keys.
+- We send servos message only if the rear wheels are moving, to ignore all the messages send even though the user did not touch anything. However if you click once on the `j` or `l` keys (so moving left/right without moving the rear wheels), messages to the servo will be send.
 
-It the conditions are met. We then send the message.
 
 ### Send message
 

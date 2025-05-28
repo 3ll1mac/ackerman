@@ -99,7 +99,11 @@ void SweepServo::setTargetPosition(int position)
 
 void SweepServo::updateTargetPosition(int position)
 {
-  int margin = position > 0? 1: -1;
+  int margin = 0;
+  if (position != 0)
+  {
+    margin = position > 0? 1: -1;
+  }
   if (this->targetPositionDegrees + position + margin >= 0 && this->targetPositionDegrees + position + margin <= 180)
   {
      this->targetPositionDegrees += (position + margin);
