@@ -184,3 +184,17 @@ If you are using a VM and it still does not work or you have broken gazebo by un
 If your robot is half sinking into the ground has seen in the following image. Make sure you have a **collision** tag for the wheels, and the collision has an origin and geometry tags.
 
 ![Texte alternatif](images/wheels_sinking.png "Links et joints dans un robot")
+
+
+ <div id="number5"></div>
+<span style="color:darkred">
+
+# NUMBER 7 -  Inertial tag not a double
+</span>
+
+If you try to make some calculation within the ixx, iyy ,izz tags. Remember to as follow:
+ixx = "${var1 + 2/ 3+ var5}"
+
+And NOT TO DO:
+ixx = "${var1} + 2 / 3  + ${var5}"
+We need it all the string to be evaluated as a all.
