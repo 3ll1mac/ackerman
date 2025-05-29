@@ -18,8 +18,14 @@
     <xacro:property name="base_width" value="0.117"/>
     <xacro:property name="base_length" value="0.183"/>
     <xacro:property name="base_height" value="0.05"/>
+    <xacro:property name="base_mass" value="120"/>
+
     <xacro:property name="wheel_radius" value="0.03"/>
     <xacro:property name="wheel_width" value="0.02"/>
+    <xacro:property name="wheel_mass" value="11"/>
+
+
+
     <xacro:property name="wheel_ygap" value="0.025"/>
     <xacro:property name="wheel_zoff" value="0.05"/>
     <xacro:property name="wheel_xoff" value="0.12"/>
@@ -50,8 +56,10 @@
 
         <inertial>
             <origin xyz="0 0 0" rpy="0 0 0" />
-            <mass value="100" />
-            <inertia ixx="1.04" ixy="0.0" ixz="0.0" iyy="3.54" iyz="0.0" izz="4.166" />
+            <mass value="${base_mass}" />
+            <inertia ixx="${1/12 * base_mass * (base_height**2 + base_length ** 2)}" ixy="0.0" ixz="0.0" 
+            iyy="${1/12 * base_mass * (base_height ** 2 + base_width ** 2)}" iyz="0.0" 
+            izz="${1/12 * base_mass * (base_width ** 2 + base_length ** 2)}" />
         </inertial>
     </link>
 
@@ -65,19 +73,21 @@
     <link name="rear_left_wheel">
         <collision>
             <geometry>
-                <cylinder length="0.02" radius="0.03" />
+                <cylinder length="${wheel_width}" radius="${wheel_radius}" />
             </geometry>
         </collision>
         <visual>
             <geometry>
-                <cylinder length="0.02" radius="0.03" />
+                <cylinder length="${wheel_width}" radius="${wheel_radius}" />
             </geometry>
             <material name="Black" />
         </visual>
 
         <inertial>
-            <mass value="11.3" />
-            <inertia ixx="0.026" ixy="0.0" ixz="0.0" iyy="0.026" iyz="0.0" izz="0.051" />
+           <mass value="${base_mass}" />
+           <inertia ixx="${1/12 * base_mass * (base_height**2 + base_length ** 2)}" ixy="0.0" ixz="0.0" 
+            iyy="${1/12 * base_mass * (base_height ** 2 + base_width ** 2)}" iyz="0.0" 
+            izz="${1/12 * base_mass * (base_width ** 2 + base_length ** 2)}" />
         </inertial>
     </link>
 
@@ -103,8 +113,11 @@
             <material name="Black" />
         </visual>
         <inertial>
-            <mass value="11.3" />
-            <inertia ixx="0.026" ixy="0.0" ixz="0.0" iyy="0.026" iyz="0.0" izz="0.051" />
+            <mass value="${wheel_mass}" />
+            <inertia ixx="${1/12*wheel_mass*(3*wheel_radius**2+wheel_width)}" 
+            ixy="0.0" ixz="0.0" 
+            iyy="${1/12*wheel_mass*(3*wheel_radius**2+wheel_width)}"  iyz="0.0" 
+            izz="${1/12*wheel_mass*wheel_radius**2}" />
         </inertial>
     </link>
 
@@ -135,8 +148,11 @@
 
     <link name="right_wheel_steering">
         <inertial>
-            <mass value="0.1"/>
-            <inertia ixx="0.26" ixy="0.0" ixz="0.0" iyy="0.26" iyz="0.0" izz="0.51" />
+           <mass value="${wheel_mass}" />
+            <inertia ixx="${1/12*wheel_mass*(3*wheel_radius**2+wheel_width)}" 
+            ixy="0.0" ixz="0.0" 
+            iyy="${1/12*wheel_mass*(3*wheel_radius**2+wheel_width)}"  iyz="0.0" 
+            izz="${1/12*wheel_mass*wheel_radius**2}" />
         </inertial>
     </link>
 
@@ -163,8 +179,11 @@
             <material name="Black" />
         </visual>
         <inertial>
-            <mass value="11.3" />
-            <inertia ixx="0.26" ixy="0.0" ixz="0.0" iyy="0.26" iyz="0.0" izz="0.51" />
+            <mass value="${wheel_mass}" />
+            <inertia ixx="${1/12*wheel_mass*(3*wheel_radius**2+wheel_width)}" 
+            ixy="0.0" ixz="0.0" 
+            iyy="${1/12*wheel_mass*(3*wheel_radius**2+wheel_width)}"  iyz="0.0" 
+            izz="${1/12*wheel_mass*wheel_radius**2}" />
         </inertial>
     </link>
 
@@ -190,8 +209,11 @@
             <material name="Black" />
         </visual>
         <inertial>
-            <mass value="11.3" />
-             <inertia ixx="0.026" ixy="0.0" ixz="0.0" iyy="0.026" iyz="0.0" izz="0.051"/>
+            <mass value="${wheel_mass}" />
+            <inertia ixx="${1/12*wheel_mass*(3*wheel_radius**2+wheel_width)}" 
+            ixy="0.0" ixz="0.0" 
+            iyy="${1/12*wheel_mass*(3*wheel_radius**2+wheel_width)}"  iyz="0.0" 
+            izz="${1/12*wheel_mass*wheel_radius**2}" />
         </inertial>
     </link>
 
