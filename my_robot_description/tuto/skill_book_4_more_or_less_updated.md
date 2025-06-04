@@ -458,8 +458,8 @@ Voici les ros_control bibliothèques à télécharger, en remplaçant \<distro\>
 
 
 ```bash
-$ sudo apt install ros-<distro>-gz-ros2-controllers
-$ sudo apt install ros-<distro>-gz-ros2-control 
+$ sudo apt install ros-<distro>-ros2-controllers
+$ sudo apt install ros-<distro>-ros2-control 
 ```
 
 #### Documentation
