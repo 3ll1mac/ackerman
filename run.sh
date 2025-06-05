@@ -22,13 +22,20 @@ sudo apt install ros-jazzy-ros-base
 source /opt/ros/jazzy/setup.bash
 
 # Some useful packages
-sudo apt install vim
-sudo apt install xterm
-sudo apt install libserial-dev 
+sudo apt install vim #vim > emacs
+sudo apt install xterm #use for teleop_twist_keyboard
+sudo apt install libserial-dev # For hardware part
+sudo snap install code --classic # little bit more usefull than vim
+sudo snap install arduino   # for the hardware part 
 
 #gazebo
 sudo apt-get install ros-jazzy-ros-gz
 
 #ros_control
 sudo apt install ros-jazzy-gz-ros2-control ros-jazzy-gz-ros2-control-demos
+
+## nav
+#sudo apt install ros-jazzy-navigation2
+#sudo apt install ros-jazzy-nav2-bringup
+#sudo apt install ros-jazzy-twist-mux
 
