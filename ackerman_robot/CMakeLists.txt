@@ -18,6 +18,9 @@ find_package(ament_cmake REQUIRED)
 foreach(Dependency IN ITEMS ${THIS_PACKAGE_INCLUDE_DEPENDS})
   find_package(${Dependency} REQUIRED)
 endforeach()
+find_package(navigation2 REQUIRED)
+find_package(nav2_bringup REQUIRED)
+find_package(slam_toolbox REQUIRED)
 
 
 ## COMPILE

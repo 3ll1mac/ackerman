@@ -40,6 +40,7 @@ def generate_launch_description():
         parameters=[robot_description, robot_controllers],
         output="both",
     )
+
     robot_state_pub_node = Node(
         package="robot_state_publisher",
         executable="robot_state_publisher",
@@ -49,6 +50,7 @@ def generate_launch_description():
             ("/"+controller+"/reference", "/cmd_vel"),
         ],
     )
+    
     rviz_node = Node(
         package="rviz2",
         executable="rviz2",

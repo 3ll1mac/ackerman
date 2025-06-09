@@ -14,6 +14,8 @@ from launch_ros.substitutions import FindPackageShare
 def generate_launch_description():
     # Launch Arguments
     use_sim_time = LaunchConfiguration('use_sim_time', default=True)
+    package_name = "ackerman_robot"
+
 
     def robot_state_publisher(context):
         performed_description_format = LaunchConfiguration('description_format').perform(context)
@@ -51,7 +53,7 @@ def generate_launch_description():
         ]
     )
 
-    world_file_name = 'world.sdf'
+    world_file_name = 'new_world.sdf'
     pkg_share = get_package_share_directory('ackerman_robot')
     world_path = os.path.join(pkg_share, 'worlds', world_file_name)
 
@@ -61,6 +63,18 @@ def generate_launch_description():
         output='screen',
         arguments=['-topic', 'robot_description', '-name',
                    'ackermann', '-allow_renaming', 'true'],
+    )
+
+    rviz_config_file = PathJoinSubstitution(
+        [FindPackageShare(package_name), "rviz", "carlikebot.rviz"]
+    )
+
+    rviz_node = Node(
+        package="rviz2",
+        executable="rviz2",
+        name="rviz2",
+        output="log",
+        arguments=["-d", rviz_config_file],
     )
 
     joint_state_broadcaster_spawner = Node(
@@ -101,6 +115,7 @@ def generate_launch_description():
 
     ld = LaunchDescription([
         bridge,
+        rviz_node,
         teleop_keyboard,
         # Launch gazebo environment
         IncludeLaunchDescription(

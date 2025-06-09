@@ -34,6 +34,12 @@ sudo apt-get install ros-jazzy-ros-gz
 #ros_control
 sudo apt install ros-jazzy-gz-ros2-control ros-jazzy-gz-ros2-control-demos
 
+
+
+## slam
+# sudo apt install ros-jazzy-slam-toolbox
+
+
 ## nav
 #sudo apt install ros-jazzy-navigation2
 #sudo apt install ros-jazzy-nav2-bringup
