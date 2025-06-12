@@ -82,6 +82,7 @@ def generate_launch_description():
         executable='spawner',
         arguments=['joint_state_broadcaster'],
     )
+
     ackermann_steering_controller_spawner = Node(
         package='controller_manager',
         executable='spawner',
@@ -94,11 +95,13 @@ def generate_launch_description():
     )
 
     # Bridge
+    bridge_params = os.path.join(get_package_share_directory(package_name),'config','ros_gz_bridge.yaml')
     bridge = Node(
         package='ros_gz_bridge',
         executable='parameter_bridge',
-        arguments=['/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock'],
-        output='screen'
+        arguments=[
+            '--ros-args', '-p', f'config_file:={bridge_params}',
+        ]
     )
 
     # Teleop Twist Keyboard
