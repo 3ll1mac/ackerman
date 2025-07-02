@@ -14,11 +14,11 @@ $  ros2 launch ackerman_robot ackermann_drive_example.launch.py
 
 ## Ros control
 
-First, the current ackermann project was based on the (https://github.com/ros-controls/gz_ros2_control/tree/rolling/gz_ros2_control_demos/examples)ros_control_demo. They already have an ackermann example that can be tested with the example_ackermann_drive.cpp.
+First, the current ackermann project was based on the [ros_control_demo](https://github.com/ros-controls/gz_ros2_control/tree/rolling/gz_ros2_control_demos/examples). They already have an ackermann example that can be tested with the example_ackermann_drive.cpp.
 
 After that, the teleop key node can be added to the launch file with the valid remap from <code>/cmd_vel</code> to <code>controller_name>/reference</code>.
 
-In order to move the ackerman robot, the steering_controllers_library (https://control.ros.org/rolling/doc/ros2_controllers/steering_controllers_library/doc/userdoc.html#steering-controllers-library-userdoc) was used. It already handles the ackermann project where the wheels on one axis are fixed (traction/drive) wheels, and the wheels on the other axis are steerable.
+In order to move the ackerman robot, the [steering_controllers_library](https://control.ros.org/rolling/doc/ros2_controllers/steering_controllers_library/doc/userdoc.html#steering-controllers-library-userdoc) was used. It already handles the ackermann project where the wheels on one axis are fixed (traction/drive) wheels, and the wheels on the other axis are steerable.
 
 ## Overall working
 
@@ -33,7 +33,7 @@ First we can notice that the two back (or rear) wheels have a <code>command_inte
 
 On the contrary the two front wheels have <code>command_interface</code> and <code>state_interface</code> for position and nothing for velocity.
 
-So, these two interface are from the Hardware interfaces(http://docs.ros.org/en/melodic/api/hardware_interface/html/c++/index.html)) and to quote the website:"Hardware interfaces are used by ROS control in conjunction with one of the available ROS controllers to **send** (hardware_interface::RobotHW::write) **commands** to the hardware and **receive** (hardware_interface::RobotHW::read) **states** from the robot's resources (joints, sensors, actuators)."
+So, these two interface are from the [Hardware interfaces](http://docs.ros.org/en/melodic/api/hardware_interface/html/c++/index.html)) and to quote the website:"Hardware interfaces are used by ROS control in conjunction with one of the available ROS controllers to **send** (hardware_interface::RobotHW::write) **commands** to the hardware and **receive** (hardware_interface::RobotHW::read) **states** from the robot's resources (joints, sensors, actuators)."
 
 We can summarize by saying ros_control send <i>data</i> to the joint in the command tag et take <i>data</i> from the state tags.
 
@@ -74,11 +74,123 @@ The <code>cmd_vel</code> is remapped to the <code>ackermann_steering_controller/
 
 So for ros_control documentation, first the official documentation:
 
-The github repository where you can find demos (including ackermann demo) :ros_control_demo (https://github.com/ros-controls/gz_ros2_control/tree/rolling/gz_ros2_control_demos/examples)
+The github repository where you can find demos (including ackermann demo) : [ros_control_demo](https://github.com/ros-controls/gz_ros2_control/tree/rolling/gz_ros2_control_demos/examples)
 
-The documentation for the steering_controllers_library(https://control.ros.org/rolling/doc/ros2_controllers/steering_controllers_library/doc/userdoc.html#steering-controllers-library-userdoc), linked with the ros_control_demo and very useful.
+The documentation for the [steering_controllers_library](https://control.ros.org/rolling/doc/ros2_controllers/steering_controllers_library/doc/userdoc.html#steering-controllers-library-userdoc), linked with the ros_control_demo and very useful.
 
-This parts ends with this (https://fjp.at/posts/ros/ros-control/) not official website explaining rather well ros_control and its inner working for beginners. 
+This parts ends with [this](https://fjp.at/posts/ros/ros-control/) not official website explaining rather well ros_control and its inner working for beginners. 
+
+
+## NAV2
+
+In order to properly use NAV2, we have a few things to add / modify first
+
+### Lidar
+
+In order to navigate autonomously, we need to be able to see around us. So the first thing to do was to add a lidar. 
+We add it link in joint in the URDF file, to the form of our choice.  Then, we need to add its connection to the gazebo sensor.
+
+```
+<gazebo reference="laser_frame">
+        <material>Gazebo/Red</material>
+
+        <sensor name="laser" type="gpu_lidar">
+            <pose> 0 0 0 0 0 0 </pose>
+            <visualize>false</visualize>
+            <update_rate>10</update_rate>
+            <lidar>
+                <scan>
+                    <horizontal>
+                        <samples>360</samples>
+                        <min_angle>-3.14</min_angle>
+                        <max_angle>3.14</max_angle>
+                    </horizontal>
+                </scan>
+                <range>
+                    <min>0.3</min>
+                    <max>12</max>
+                </range>
+            </lidar>
+           <topic>scan</topic>
+            <gz_frame_id>laser_frame</gz_frame_id>
+        </sensor>
+    </gazebo>
+```
+
+There is a few things to note about this component. 
+First we can see that its type is a `gpu\_lidar`
+The frame name is `laser_frame`, which is the link to that will act as the lidar.
+The topic `scan` tells to which topic we are going to publish our received data.
+`update_rate` is the frequency at which the lidar data is generated.
+
+Under the `horizontal` tag we define the properties of the horizontal laser rays.
+`samples` is the number of simulated lidar rays to generate per complete laser sweep cycle.
+The `min_angle` and `max_angle` are the angle range of the generated rays.
+
+Under the `range` we define range properties of each simulated ray
+`min` and `max` define the minimum and maximum distance for each lidar ray.
+The `resolution` tag here defines the linear resolution of each lidar ray.
+
+
+From there, in gazebo, we can add the plugin `Vizualize lidar`, subcribe it to the `/scan` topic and we should be able to see the radar.
+
+![Texte alternatif](images/gazebo_lidar.png "Lidar in gazebo")
+
+
+You can take a look at this [link](https://gazebosim.org/docs/latest/sensors/) to know more about sensors in gazebo.
+
+
+### SLAM
+
+In order to update as wished slam, we copied the file from the `slam_toolbox/config/` directory. 
+These lines are the ones must interesting to us.
+
+```
+scan_topic: /scan
+mode: localization
+
+map_file_name: /home/ubuntu/Documents/ackerman/ackerman_robot/my_map_serial2
+```
+
+We can see we could update the scan_topic to the one describe in the URDF sensor component.
+The map_file_name precise a path to wich an already made map we can load.
+
+
+Here is the command to run slam on top of the launch 'launch/ackermann_sim.launch.py':
+
+`
+ros2 launch slam toolbox online_async.launch.py params_file:=/config/slam.yaml use_sim_time:=true
+`
+
+And here is the result.
+
+![Texte alternatif](images/slam.png "SLAM in rviz")
+
+
+
+[Here](https://docs.nav2.org/tutorials/docs/navigation2_with_slam.htm) is the official documentation.
+
+
+
+
+### NAV2 (really this time)
+
+Nav uses the map created by SLAM for estimating the robot position.
+On top of this static map, is added the live data provided by lidar to be sure not to bump into anything. This new map is called a costmap. 
+
+We can now run the nav2 node. The only real difficulty is some remapings. Indeed we need to make sure that nav2 send its cmd to our `ackermann_robot/reference' topic. Still an weird unknown issue today. But it works fine for a diffbot robot. One issue was that diffbot does not use TimeStamp messages unlike the ackermann_steering_controller. And there was an issue as nav may publish unstamped message. However, this issue is suppose to fix from quite some years now.
+
+You can launch nav2 node with the following command :
+
+`
+ros2 launch nav2_bringup  navigation.launch.py use_sim_time:=true
+`
+
+![Texte alternatif](images/costmap.png "Costmap")
+
+
+Furthermore, in rvizz, you can see a goal green array, that you can point to a point within you map. If everything is okay, your robot will start to move towards where the green array aims.
+
 
 
 # Documentation
